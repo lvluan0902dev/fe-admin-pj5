@@ -8,6 +8,7 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { RequestResetComponent } from './authentication/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './authentication/password/response-reset/response-reset.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
