@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { LoginService } from 'src/app/core/services/login/login.service';
 import { TokenService } from 'src/app/core/services/token/token.service';
 
@@ -18,7 +20,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -37,5 +41,7 @@ export class LoginComponent implements OnInit {
 
   private handleResponsive(data: any) {
     this.tokenService.set(data.access_token);
+    this.authService.changeAuthStatus(true);
+    this.router.navigateByUrl('/dashboard')
   }
 }
