@@ -8,7 +8,7 @@ import { RegisterService } from 'src/app/core/services/register/register.service
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  form = this.fb.group({
+  public form = this.fb.group({
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  public onSubmit() {
     let data = {
       name: this.form.value.name,
       email: this.form.value.email,

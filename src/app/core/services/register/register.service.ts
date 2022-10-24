@@ -19,7 +19,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
-  register(data: object) {
+  public register(data: object) {
     let url = this.apiUrl + '/auth/register';
     return this.http.post(url, data, httpOptions).pipe(catchError(this.errorService.handleError));
   }

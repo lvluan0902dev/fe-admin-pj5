@@ -19,7 +19,7 @@ export class LoginService {
 
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
-  login(data: object) {
+  public login(data: object) {
     let url = this.apiUrl + '/auth/login';
     return this.http.post(url, data, httpOptions).pipe(catchError(this.errorService.handleError));
   }
