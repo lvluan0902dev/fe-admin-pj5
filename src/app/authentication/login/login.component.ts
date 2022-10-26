@@ -3,7 +3,6 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { LoginService } from 'src/app/core/services/login/login.service';
 import { TokenService } from 'src/app/core/services/token/token.service';
 
 @Component({
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService,
     private tokenService: TokenService,
     private router: Router,
     private authService: AuthService
@@ -34,7 +32,7 @@ export class LoginComponent implements OnInit {
       password: this.form.value.password
     };
 
-    this.loginService.login(data).subscribe((data) => {
+    this.authService.login(data).subscribe((data) => {
       this.handleResponsive(data);
     });
   }

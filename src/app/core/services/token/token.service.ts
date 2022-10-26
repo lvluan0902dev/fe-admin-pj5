@@ -24,7 +24,7 @@ export class TokenService {
     const token = this.get();
     if (token) {
       const payload = this.payload(token);
-      if (payload.iss === environment.apiUrl + '/auth/login') {
+      if (payload.iss === environment.apiUrl + '/login') {
         return true;
       } else {
         return false;

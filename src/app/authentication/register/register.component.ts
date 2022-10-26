@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { RegisterService } from 'src/app/core/services/register/register.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,10 @@ export class RegisterComponent implements OnInit {
     password_confirmation: ['', [Validators.required, Validators.minLength(6)]]
   });
 
-  constructor(private fb: FormBuilder, private registerService: RegisterService) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -28,7 +31,7 @@ export class RegisterComponent implements OnInit {
       password_confirmation: this.form.value.password_confirmation,
     };
 
-    this.registerService.register(data).subscribe((data) => {
+    this.authService.register(data).subscribe((data) => {
       console.log(data);
     });
   }

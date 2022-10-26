@@ -8,7 +8,8 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { RequestResetComponent } from './authentication/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './authentication/password/response-reset/response-reset.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,13 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
