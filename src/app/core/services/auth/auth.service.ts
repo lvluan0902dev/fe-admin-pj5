@@ -6,8 +6,7 @@ import { TokenService } from '../token/token.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    // Authorization: 'my-auth-token'
+    'Content-Type': 'application/json'
   })
 };
 
@@ -21,7 +20,7 @@ export class AuthService {
   constructor(
     private tokenService: TokenService,
     private http: HttpService,
-    ) { }
+  ) { }
 
   public changeAuthStatus(value: boolean) {
     this.loggedIn.next(value);

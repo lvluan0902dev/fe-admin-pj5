@@ -6,14 +6,14 @@ import {
   HttpInterceptor,
   HttpHeaders,
 } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { TokenService } from '../../services/token/token.service';
 import { Router } from '@angular/router';
 import { ErrorService } from '../../services/error/error.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  static router: Router;
+  protected static router: Router;
 
   constructor(
     private tokenService: TokenService,
@@ -29,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
       const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
       request = request.clone({ headers });
     } else {
-      localStorage.removeItem('token');
+      this.tokenService.remove();
       AuthInterceptor.router.navigateByUrl('/login');
     }
     return next.handle(request).pipe(catchError(this.errorService.handleError));
