@@ -23,9 +23,9 @@ export class ErrorService {
     if (error.status === 401) {
       localStorage.removeItem('token');
       ErrorService.router.navigateByUrl('/login');
-      ErrorService.toastService.error('error', error.message);
     }
 
+    ErrorService.toastService.error('Error', error.message);
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }
