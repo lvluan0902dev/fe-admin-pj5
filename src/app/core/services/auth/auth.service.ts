@@ -39,6 +39,6 @@ export class AuthService {
   }
 
   public logout() {
-    this.tokenService.remove();
+    return this.http.post('logout', null, httpOptions);
   }
 }

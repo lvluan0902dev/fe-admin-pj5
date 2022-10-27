@@ -23,8 +23,11 @@ export class SidebarComponent implements OnInit {
 
   public logout(event: MouseEvent) {
     event.preventDefault();
+    this.authService.logout().subscribe((data) => {
+      console.log(data);
+    });
     this.tokenService.remove();
     this.authService.changeAuthStatus(false);
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/login');
   }
 }
