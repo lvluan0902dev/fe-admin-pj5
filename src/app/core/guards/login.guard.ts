@@ -12,7 +12,7 @@ export class LoginGuard implements CanActivate {
     if (!this.tokenService.loggedIn()) {
       return true;
     } else {
-      this.router.navigateByUrl('dashboard');
+      this.router.navigateByUrl('/dashboard');
     }
   }
 
