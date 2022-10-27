@@ -5,13 +5,11 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHeaders,
-  HttpResponse,
-  HttpErrorResponse
 } from '@angular/common/http';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { TokenService } from '../../services/token/token.service';
-import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { ErrorService } from '../../services/error/error.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -19,6 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
     private tokenService: TokenService,
+    private errorService: ErrorService,
     router: Router
   ) {
     AuthInterceptor.router = router;
@@ -28,21 +27,11 @@ export class AuthInterceptor implements HttpInterceptor {
     const token = this.tokenService.get();
     if (token) {
       const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-      const authRequest = request.clone({ headers });
-      return next.handle(authRequest).pipe(catchError(this.handleError));
+      request = request.clone({ headers });
     } else {
       localStorage.removeItem('token');
       AuthInterceptor.router.navigateByUrl('/login');
     }
-    return next.handle(request);
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 401) {
-      localStorage.removeItem('token');
-      AuthInterceptor.router.navigateByUrl('/login');
-    }
-
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return next.handle(request).pipe(catchError(this.errorService.handleError));
   }
 }

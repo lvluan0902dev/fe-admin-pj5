@@ -1,8 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { ErrorService } from '../../handlers/error/error.service';
+import { HttpService } from '../http/http.service';
 import { TokenService } from '../token/token.service';
 
 const httpOptions = {
@@ -18,11 +17,10 @@ const httpOptions = {
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(this.tokenService.loggedIn());
   public authStatus = this.loggedIn.asObservable();
-  private apiUrl = environment.apiUrl;
 
   constructor(
     private tokenService: TokenService,
-    private http: HttpClient,
+    private http: HttpService,
     ) { }
 
   public changeAuthStatus(value: boolean) {
@@ -30,18 +28,15 @@ export class AuthService {
   }
 
   public login(data: object) {
-    let url = this.apiUrl + '/login';
-    return this.http.post(url, data, httpOptions);
+    return this.http.post('login', data, httpOptions);
   }
 
   public register(data: object) {
-    let url = this.apiUrl + '/register';
-    return this.http.post(url, data, httpOptions);
+    return this.http.post('register', data, httpOptions);
   }
 
   public me() {
-    let url = this.apiUrl + '/me';
-    return this.http.post(url, null, httpOptions);
+    return this.http.post('me', null, httpOptions);
   }
 
   public logout() {

@@ -26,7 +26,10 @@
               "src/styles.css",
               "src/assets/plugins/fontawesome-free/css/all.min.css",
               "src/assets/dist/css/adminlte.min.css",
-              "src/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+              "src/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [
               "src/assets/plugins/jquery/jquery.min.js",
