@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { ToastService } from 'src/app/core/services/toast/toast.service';
 import { TokenService } from 'src/app/core/services/token/token.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class SidebarComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private toastService: ToastService
     ) { }
 
   ngOnInit(): void {
@@ -29,5 +31,6 @@ export class SidebarComponent implements OnInit {
     this.tokenService.remove();
     this.authService.changeAuthStatus(false);
     this.router.navigateByUrl('/login');
+    this.toastService.success('Success', 'Logout Success');
   }
 }
