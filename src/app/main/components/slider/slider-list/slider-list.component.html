@@ -17,22 +17,27 @@
 
     <section class="content">
         <div class="card">
-            <p-table [value]="customers" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first" responsiveLayout="scroll"
-                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+            <p-table [value]="sliders" [lazy]="true" (onLazyLoad)="loadCustomers($event)" [totalRecords]="totalRecords"
+                [loading]="loading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
+                [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['title','content']">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>Company</th>
-                        <th>Representative</th>
+                        <th pSortableColumn="title">Title <p-sortIcon field="title"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="content">Content <p-sortIcon field="content"></p-sortIcon>
+                        </th>
+                        <th>Link</th>
+                        <th>Image</th>
+                        <th pSortableColumn="created_at">Create Date <p-sortIcon field="created_at"></p-sortIcon></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-customer>
+                <ng-template pTemplate="body" let-slider>
                     <tr>
-                        <td>{{customer.name}}</td>
-                        <td>{{customer.country.name}}</td>
-                        <td>{{customer.company}}</td>
-                        <td>{{customer.representative.name}}</td>
+                        <td>{{slider.title}}</td>
+                        <td>{{slider.content}}</td>
+                        <td>{{slider.link}}</td>
+                        <td>{{slider.image_name}}</td>
+                        <td>{{slider.created_at|date:'longDate'}}</td>
                     </tr>
                 </ng-template>
             </p-table>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,12 +12,12 @@ export class HttpService {
     private httpClient: HttpClient
   ) { }
 
-  public get(api: string, options?: any) {
+  public get(api: string, options?: any): Observable<any> {
     const url = `${this.host}/${api}`
     return this.httpClient.get(url, options);
   }
 
-  public post(api: string, payload: any, options?: any) {
+  public post(api: string, payload: any, options?: any): Observable<any> {
     const url = `${this.host}/${api}`
     return this.httpClient.post(url, payload, options)
   }
