@@ -22,7 +22,8 @@ export class SliderService {
       first_row: data.first,
       per_page: data.rows == undefined ? 0 : data.rows,
       sort_field: data.sortField == undefined ? '' : data.sortField,
-      sort_type: data.sortOrder == 1 ? 'ASC' : 'DESC'
+      sort_type: data.sortOrder == 1 ? 'ASC' : 'DESC',
+      search: data.searchInput
     }
     return this.httpService.post('slider/list', payload, httpOptions);
   }
