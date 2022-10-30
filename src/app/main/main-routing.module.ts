@@ -21,6 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'slider',
+        component: SliderListComponent,
         children: [
           {
             path: 'list',

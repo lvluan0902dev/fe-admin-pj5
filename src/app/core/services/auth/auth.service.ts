@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(
     private tokenService: TokenService,
-    private http: HttpService,
+    private httpService: HttpService,
   ) { }
 
   public changeAuthStatus(value: boolean) {
@@ -27,18 +27,18 @@ export class AuthService {
   }
 
   public login(data: object) {
-    return this.http.post('login', data, httpOptions);
+    return this.httpService.post('login', data, httpOptions);
   }
 
   public register(data: object) {
-    return this.http.post('register', data, httpOptions);
+    return this.httpService.post('register', data, httpOptions);
   }
 
   public me() {
-    return this.http.post('me', null, httpOptions);
+    return this.httpService.post('me', null, httpOptions);
   }
 
   public logout() {
-    return this.http.post('logout', null, httpOptions);
+    return this.httpService.post('logout', null, httpOptions);
   }
 }
