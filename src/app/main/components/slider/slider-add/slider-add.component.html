@@ -16,18 +16,18 @@
     </section>
 
     <section class="content">
-        <form>
+        <form [formGroup]="form">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Title</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" formControlName="title">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Link</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" formControlName="link">
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Content</label>
-                        <p-editor [style]="{'height':'320px'}"></p-editor>
+                        <p-editor [style]="{'height':'320px'}" formControlName="content"></p-editor>
                     </div>
                 </div>
             </div>
@@ -44,10 +44,7 @@
                     <div class="form-group">
                         <label>Image</label>
                         <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="file-input">
-                                <label class="custom-file-label" for="file-input">Choose file</label>
-                            </div>
+                            <input type="file" class="form-control" id="file-input" formControlName="image">
                         </div>
                     </div>
                 </div>
@@ -57,14 +54,14 @@
                     <div class="form-group">
                         <label>Status</label>
                         <div>
-                            <p-inputSwitch></p-inputSwitch>
+                            <p-inputSwitch formControlName="status"></p-inputSwitch>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary mr-2">Save</button>
+                    <button type="submit" class="btn btn-primary mr-2" (click)="save()">Save</button>
                     <button type="submit" class="btn btn-info mr-2">Save and Back</button>
                     <a routerLink="/slider/list">
                         <button type="submit" class="btn btn-secondary">Back</button>

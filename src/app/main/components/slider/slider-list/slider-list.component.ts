@@ -10,11 +10,11 @@ import { SliderService } from 'src/app/main/services/slider/slider.service';
   styleUrls: ['./slider-list.component.css']
 })
 export class SliderListComponent implements OnInit {
-  sliders: Slider[] = [];
-  totalRecords: number = 0;
-  loading: boolean = true;
-  event: any;
-  search_input: string = '';
+  public sliders: Slider[] = [];
+  public totalRecords: number = 0;
+  public loading: boolean = true;
+  public event: any;
+  public search_input: string = '';
 
   constructor(
     private sliderService: SliderService,
@@ -27,7 +27,7 @@ export class SliderListComponent implements OnInit {
     this.loading = true;
   }
 
-  loadCustomers(event: LazyLoadEvent) {
+  public loadCustomers(event: LazyLoadEvent) {
     this.loading = true;
     this.event = event;
     this.event.searchInput = this.search_input;
@@ -40,7 +40,7 @@ export class SliderListComponent implements OnInit {
     }, 1000);
   }
 
-  search(value: string) {
+  public search(value: string) {
     this.loading = true;
     this.search_input = value;
     this.event.searchInput = this.search_input;

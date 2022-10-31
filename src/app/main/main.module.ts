@@ -14,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToolbarModule } from 'primeng/toolbar';
 import { EditorModule } from 'primeng/editor';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { InputSwitchModule } from 'primeng/inputswitch';
     InputTextModule,
     ToolbarModule,
     EditorModule,
-    InputSwitchModule
+    InputSwitchModule,
+    ReactiveFormsModule
   ]
 })
 export class MainModule { }
