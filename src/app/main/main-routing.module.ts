@@ -30,10 +30,6 @@ const routes: Routes = [
       {
         path: 'slider/edit',
         component: SliderEditComponent
-      },
-      {
-        path: '**',
-        component: DashboardComponent
       }
     ]
   }
