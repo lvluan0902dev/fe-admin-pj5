@@ -12,7 +12,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToolbarModule } from 'primeng/toolbar';
-import {EditorModule} from 'primeng/editor';
+import { EditorModule } from 'primeng/editor';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {EditorModule} from 'primeng/editor';
     ButtonModule,
     InputTextModule,
     ToolbarModule,
-    EditorModule
+    EditorModule,
+    InputSwitchModule
   ]
 })
 export class MainModule { }

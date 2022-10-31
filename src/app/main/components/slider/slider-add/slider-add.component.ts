@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-slider-add',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliderAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private title: Title
+  ) {
+    this.title.setTitle('Slider  add');
+  }
 
   ngOnInit(): void {
   }
