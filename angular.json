@@ -29,13 +29,16 @@
               "src/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": [
               "src/assets/plugins/jquery/jquery.min.js",
               "src/assets/plugins/bootstrap/js/bootstrap.bundle.min.js",
               "src/assets/dist/js/adminlte.min.js",
-              "src/assets/dist/js/demo.js"
+              "src/assets/dist/js/demo.js",
+              "node_modules/quill/dist/quill.js"
             ]
           },
           "configurations": {

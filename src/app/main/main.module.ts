@@ -12,6 +12,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToolbarModule } from 'primeng/toolbar';
+import {EditorModule} from 'primeng/editor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ToolbarModule } from 'primeng/toolbar';
     TableModule,
     ButtonModule,
     InputTextModule,
-    ToolbarModule
+    ToolbarModule,
+    EditorModule
   ]
 })
 export class MainModule { }
