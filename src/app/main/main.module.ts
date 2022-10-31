@@ -8,10 +8,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SliderListComponent } from './components/slider/slider-list/slider-list.component';
 import { SliderAddComponent } from './components/slider/slider-add/slider-add.component';
 import { SliderEditComponent } from './components/slider/slider-edit/slider-edit.component';
-import {TableModule} from 'primeng/table';
-import {ButtonModule} from 'primeng/button';
-
-
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,9 @@ import {ButtonModule} from 'primeng/button';
     MainRoutingModule,
     SharedModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    InputTextModule,
+    ToolbarModule
   ]
 })
 export class MainModule { }

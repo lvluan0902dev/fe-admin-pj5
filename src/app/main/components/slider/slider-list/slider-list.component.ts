@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { LazyLoadEvent } from 'primeng/api';
 import { Slider } from 'src/app/main/models/slider/slider.model';
 import { SliderService } from 'src/app/main/services/slider/slider.service';
@@ -16,20 +17,14 @@ export class SliderListComponent implements OnInit {
   search_input: string = '';
 
   constructor(
-    private sliderService: SliderService
-  ) { }
+    private sliderService: SliderService,
+    private title: Title
+  ) {
+    this.title.setTitle('Slider list');
+  }
 
   ngOnInit(): void {
     this.loading = true;
-    let data = {
-      first_row: 0,
-      per_page: 10
-    }
-    this.sliderService.list(data).subscribe(response => {
-      this.sliders = response.data;
-      this.totalRecords = response.total_result;
-      this.loading = false;
-    })
   }
 
   loadCustomers(event: LazyLoadEvent) {

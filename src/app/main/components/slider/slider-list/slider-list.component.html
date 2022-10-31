@@ -17,18 +17,23 @@
 
     <section class="content">
         <div class="card">
+            <p-toolbar>
+                <div class="p-toolbar-group-left">
+                </div>
+
+                <div class="p-toolbar-group-right">
+                    <div class="p-d-flex">
+                        <span class="p-ml-auto">
+                            <input pInputText type="text" #search_input placeholder="Search keyword" />
+                            <p-button icon="pi pi-search" styleClass="p-button" (click)="search(search_input.value)">
+                            </p-button>
+                        </span>
+                    </div>
+                </div>
+            </p-toolbar>
             <p-table [value]="sliders" [lazy]="true" (onLazyLoad)="loadCustomers($event)" [totalRecords]="totalRecords"
                 [loading]="loading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
                 [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['title','content']">
-                <ng-template pTemplate="caption">
-                    <div class="flex">
-                        <span class="p-input-icon-left ml-auto">
-                            <i class="pi pi-search"></i>
-                            <input type="text" #search_input placeholder="Search keyword" />
-                            <button (click)="search(search_input.value)">Search</button>
-                        </span>
-                    </div>
-                </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
                         <th pSortableColumn="title">Title <p-sortIcon field="title"></p-sortIcon>
@@ -37,7 +42,8 @@
                         </th>
                         <th>Link</th>
                         <th>Image</th>
-                        <th pSortableColumn="created_at">Create Date <p-sortIcon field="created_at"></p-sortIcon></th>
+                        <th pSortableColumn="created_at">Create Date <p-sortIcon field="created_at"></p-sortIcon>
+                        </th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-slider>
