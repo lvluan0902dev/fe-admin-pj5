@@ -19,6 +19,11 @@
         <div class="card">
             <p-toolbar>
                 <div class="p-toolbar-group-left">
+                    <a routerLink="/slider/add">
+                        <button pButton pRipple type="button" label="Add" class="p-button-outlined p-button-success"
+                            icon="pi pi-plus-circle">
+                        </button>
+                    </a>
                 </div>
 
                 <div class="p-toolbar-group-right">
@@ -44,6 +49,7 @@
                         <th>Image</th>
                         <th pSortableColumn="created_at">Create Date <p-sortIcon field="created_at"></p-sortIcon>
                         </th>
+                        <th>Status</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-slider>
@@ -53,6 +59,7 @@
                         <td>{{slider.link}}</td>
                         <td>{{slider.image_name}}</td>
                         <td>{{slider.created_at|date:'longDate'}}</td>
+                        <td>{{slider.status}}</td>
                     </tr>
                 </ng-template>
             </p-table>

@@ -20,22 +20,20 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'slider',
-        component: SliderListComponent,
-        children: [
-          {
-            path: 'list',
-            component: SliderListComponent
-          },
-          {
-            path: 'add',
-            component: SliderAddComponent
-          },
-          {
-            path: 'edit',
-            component: SliderEditComponent
-          }
-        ]
+        path: 'slider/list',
+        component: SliderListComponent
+      },
+      {
+        path: 'slider/add',
+        component: SliderAddComponent
+      },
+      {
+        path: 'slider/edit',
+        component: SliderEditComponent
+      },
+      {
+        path: '**',
+        component: DashboardComponent
       }
     ]
   }
