@@ -32,7 +32,7 @@ export class SliderListComponent implements OnInit {
     this.event = event;
     this.event.searchInput = this.search_input;
     setTimeout(() => {
-      this.sliderService.list(this.event).subscribe(response => {
+      this.sliderService.list(this.event).subscribe((response) => {
         this.sliders = response.data;
         this.totalRecords = response.total_result;
         this.loading = false;

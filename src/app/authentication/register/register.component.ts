@@ -31,8 +31,8 @@ export class RegisterComponent implements OnInit {
       password_confirmation: this.form.value.password_confirmation,
     };
 
-    this.authService.register(data).subscribe((data) => {
-      console.log(data);
+    this.authService.register(data).subscribe((response) => {
+      console.log(response);
     });
   }
 
