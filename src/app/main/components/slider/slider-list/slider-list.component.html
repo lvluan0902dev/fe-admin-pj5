@@ -20,17 +20,18 @@
             <p-toolbar>
                 <div class="p-toolbar-group-left">
                     <a routerLink="/slider/add">
-                        <button pButton pRipple type="button" label="Thêm" class="p-button-outlined p-button-success"
+                        <!-- <button pButton pRipple type="button" label="Thêm" class="p-button-outlined p-button-success"
                             icon="pi pi-plus-circle">
-                        </button>
+                        </button> -->
+                        <button pButton label="Thêm" icon="pi pi-plus" class="p-button-success p-button-sm"></button>
                     </a>
                 </div>
 
                 <div class="p-toolbar-group-right">
                     <div class="p-d-flex">
                         <span class="p-ml-auto">
-                            <input pInputText type="text" #search_input placeholder="Tiêu đề, Nội dung" />
-                            <p-button icon="pi pi-search" styleClass="p-button" (click)="search(search_input.value)">
+                            <input pInputText type="text" class="p-inputtext-sm" #search_input placeholder="Tiêu đề, Nội dung" />
+                            <p-button icon="pi pi-search" styleClass="p-button-sm" (click)="search(search_input.value)">
                             </p-button>
                         </span>
                     </div>
