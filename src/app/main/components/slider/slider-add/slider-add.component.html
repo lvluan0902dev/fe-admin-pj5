@@ -22,12 +22,22 @@
                     <div class="form-group">
                         <label>Title</label>
                         <input type="text" class="form-control" formControlName="title">
+                        <div *ngIf="form.controls.title.invalid && submitted">
+                            <div *ngIf="form.controls.title.errors?.['required']">
+                                <small class="p-error">Title is required</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Link</label>
                         <input type="text" class="form-control" formControlName="link">
+                        <div *ngIf="form.controls.link.invalid && submitted">
+                            <div *ngIf="form.controls.link.errors?.['required']">
+                                <small class="p-error">Link is required</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,16 +46,24 @@
                     <div class="form-group">
                         <label>Content</label>
                         <p-editor [style]="{'height':'320px'}" formControlName="content"></p-editor>
+                        <div *ngIf="form.controls.content.invalid && submitted">
+                            <div *ngIf="form.controls.content.errors?.['required']">
+                                <small class="p-error">Content is required</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label>Image</label>
-                        <div class="input-group">
-                            <input #fileInput type="file" class="form-control" id="file-input" formControlName="image">
-                        </div>
+                            <input #fileInput type="file" class="form-control" id="file-input" accept="image/*" formControlName="image">
+                            <div *ngIf="form.controls.image.invalid && submitted">
+                                <div *ngIf="form.controls.image.errors?.['required']">
+                                    <small class="p-error">Image is required</small>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -61,7 +79,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary mr-2" (click)="save(fileInput.files )">Save</button>
+                    <button type="submit" class="btn btn-primary mr-2" (click)="save(fileInput.files)">Save</button>
                     <button type="submit" class="btn btn-info mr-2">Save and Back</button>
                     <a routerLink="/slider/list">
                         <button type="submit" class="btn btn-secondary">Back</button>

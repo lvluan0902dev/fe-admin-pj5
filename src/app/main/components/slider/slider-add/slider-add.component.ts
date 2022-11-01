@@ -17,18 +17,21 @@ export class SliderAddComponent implements OnInit {
     status: [true, []],
   })
 
+  public submitted: boolean = false;
+
   constructor(
     private title: Title,
     private fb: FormBuilder,
     private sliderService: SliderService
   ) {
-    this.title.setTitle('Slider  add');
+    this.title.setTitle('Slider add');
   }
 
   ngOnInit(): void {
   }
 
   public save(files: FileList | null) {
+    this.submitted = true;
     if (this.form.status == 'VALID') {
       var formData = new FormData();
       var data = this.form.value as any;
@@ -39,11 +42,11 @@ export class SliderAddComponent implements OnInit {
         formData.set('image', files[0]);
       }
 
-      this.sliderService.add(formData).subscribe((data) => {
-        console.log(data);
+      this.sliderService.add(formData).subscribe((response) => {
+        console.log(response);
       });
     } else {
-      console.log('INVALID');
+      console.log(this.form);
     }
   }
 }
