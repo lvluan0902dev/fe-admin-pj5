@@ -24,7 +24,12 @@ export class SliderService {
       sort_field: data.sortField == undefined ? '' : data.sortField,
       sort_type: data.sortOrder == 1 ? 'ASC' : 'DESC',
       search: data.searchInput
-    }
+    };
     return this.httpService.post('slider/list', payload, httpOptions);
+  }
+
+  public add(data: any) {
+    let payload = data;
+    return this.httpService.post('slider/add', payload, httpOptions);
   }
 }

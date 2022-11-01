@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SliderService } from 'src/app/main/services/slider/slider.service';
 
 @Component({
   selector: 'app-slider-add',
@@ -13,12 +14,13 @@ export class SliderAddComponent implements OnInit {
     content: ['', [Validators.required]],
     link: ['', [Validators.required]],
     image: ['', [Validators.required]],
-    status: ['', []],
+    status: [true, []],
   })
 
   constructor(
     private title: Title,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private sliderService: SliderService
   ) {
     this.title.setTitle('Slider  add');
   }
@@ -26,8 +28,22 @@ export class SliderAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public save() {
-    console.log(this.form);
-    
+  public save(files: FileList | null) {
+    if (this.form.status == 'VALID') {
+      var formData = new FormData();
+      var data = this.form.value as any;
+      for (let key of Object.keys(data)) {
+        formData.append(key, data[key])
+      }
+      if (files?.length) {
+        formData.set('image', files[0]);
+      }
+
+      this.sliderService.add(formData).subscribe((data) => {
+        console.log(data);
+      });
+    } else {
+      console.log('INVALID');
+    }
   }
 }
