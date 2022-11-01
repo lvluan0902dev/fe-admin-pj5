@@ -80,7 +80,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary mr-2" (click)="save(fileInput.files)">Save</button>
-                    <button type="submit" class="btn btn-info mr-2">Save and Back</button>
+                    <button type="submit" class="btn btn-info mr-2" (click)="saveAndBack(fileInput.files)">Save and Back</button>
                     <a routerLink="/slider/list">
                         <button type="submit" class="btn btn-secondary">Back</button>
                     </a>
