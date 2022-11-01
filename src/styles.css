@@ -10,3 +10,12 @@ input::file-selector-button {
 .with-100percent {
     width: 100%;
 }
+
+.p-inputtext.ng-dirty.ng-invalid {
+    border-color: #ced4da !important;
+}
+
+.p-inputtext:enabled:focus {
+    box-shadow: unset !important;
+    border-color: #ced4da !important;
+}
