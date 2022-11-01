@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { LazyLoadEvent } from 'primeng/api';
 import { Slider } from 'src/app/main/models/slider/slider.model';
 import { SliderService } from 'src/app/main/services/slider/slider.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-slider-list',
@@ -10,6 +11,7 @@ import { SliderService } from 'src/app/main/services/slider/slider.service';
   styleUrls: ['./slider-list.component.css']
 })
 export class SliderListComponent implements OnInit {
+  public url = environment.url + '/';
   public sliders: Slider[] = [];
   public totalRecords: number = 0;
   public loading: boolean = true;
@@ -20,7 +22,7 @@ export class SliderListComponent implements OnInit {
     private sliderService: SliderService,
     private title: Title
   ) {
-    this.title.setTitle('Slider list');
+    this.title.setTitle('Danh sách Slider');
   }
 
   ngOnInit(): void {

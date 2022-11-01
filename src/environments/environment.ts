@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://api.pj5.local/api'
+  apiUrl: 'http://api.pj5.local/api',
+  url: 'http://api.pj5.local',
 };
 
 /*

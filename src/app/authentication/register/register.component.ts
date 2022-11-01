@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
@@ -17,8 +18,11 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
-    ) { }
+    private authService: AuthService,
+    private title: Title
+    ) {
+      this.title.setTitle('Đăng ký');
+    }
 
   ngOnInit(): void {
   }

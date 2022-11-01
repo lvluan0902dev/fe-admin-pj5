@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
@@ -22,8 +23,11 @@ export class LoginComponent implements OnInit {
     private tokenService: TokenService,
     private router: Router,
     private authService: AuthService,
-    private toastService: ToastService
-  ) { }
+    private toastService: ToastService,
+    private title: Title
+  ) {
+    this.title.setTitle('Đăng nhập');
+  }
 
   ngOnInit(): void {
   }

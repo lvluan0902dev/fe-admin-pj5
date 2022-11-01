@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <!-- <li class="breadcrumb-item"><a href="javascript:;">Slider</a></li> -->
-                        <li class="breadcrumb-item active">List</li>
+                        <li class="breadcrumb-item active">Thêm</li>
                     </ol>
                 </div>
             </div>
@@ -20,22 +20,22 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Title</label>
+                        <label>Tiêu đề <span class="required-color">*</span></label>
                         <input type="text" class="form-control" formControlName="title">
                         <div *ngIf="form.controls.title.invalid && submitted">
                             <div *ngIf="form.controls.title.errors?.['required']">
-                                <small class="p-error">Title is required</small>
+                                <small class="p-error">Tiêu đề là bắt buộc</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Link</label>
+                        <label>Đường dẫn <span class="required-color">*</span></label>
                         <input type="text" class="form-control" formControlName="link">
                         <div *ngIf="form.controls.link.invalid && submitted">
                             <div *ngIf="form.controls.link.errors?.['required']">
-                                <small class="p-error">Link is required</small>
+                                <small class="p-error">Đường dẫn là bắt buộc</small>
                             </div>
                         </div>
                     </div>
@@ -44,11 +44,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Content</label>
+                        <label>Nội dung <span class="required-color">*</span></label>
                         <p-editor [style]="{'height':'320px'}" formControlName="content"></p-editor>
                         <div *ngIf="form.controls.content.invalid && submitted">
                             <div *ngIf="form.controls.content.errors?.['required']">
-                                <small class="p-error">Content is required</small>
+                                <small class="p-error">Nội dung là bắt buộc</small>
                             </div>
                         </div>
                     </div>
@@ -57,11 +57,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Image</label>
+                        <label>Hình ảnh <span class="required-color">*</span></label>
                             <input #fileInput type="file" class="form-control" id="file-input" accept="image/*" formControlName="image">
                             <div *ngIf="form.controls.image.invalid && submitted">
                                 <div *ngIf="form.controls.image.errors?.['required']">
-                                    <small class="p-error">Image is required</small>
+                                    <small class="p-error">Hình ảnh là bắt buộc</small>
                                 </div>
                             </div>
                     </div>
@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Status</label>
+                        <label>Trạng thái</label>
                         <div>
                             <p-inputSwitch formControlName="status"></p-inputSwitch>
                         </div>
@@ -79,10 +79,10 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary mr-2" (click)="save(fileInput.files)">Save</button>
-                    <button type="submit" class="btn btn-info mr-2" (click)="saveAndBack(fileInput.files)">Save and Back</button>
+                    <button type="submit" class="btn btn-primary mr-2" (click)="save(fileInput.files)">Lưu</button>
+                    <button type="submit" class="btn btn-info mr-2" (click)="saveAndBack(fileInput.files)">Lưu và trở về</button>
                     <a routerLink="/slider/list">
-                        <button type="submit" class="btn btn-secondary">Back</button>
+                        <button type="submit" class="btn btn-secondary">Trở về</button>
                     </a>
                 </div>
             </div>

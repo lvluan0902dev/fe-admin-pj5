@@ -28,7 +28,7 @@ export class SliderAddComponent implements OnInit {
     private toastService: ToastService,
     private router: Router
   ) {
-    this.title.setTitle('Slider add');
+    this.title.setTitle('Thêm Slider');
   }
 
   ngOnInit(): void {

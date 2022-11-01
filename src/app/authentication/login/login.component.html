@@ -5,7 +5,7 @@
         </div>
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Đăng nhập hệ thống</p>
 
                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
                     <div class="input-group mb-3">
@@ -26,18 +26,18 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid">Đăng nhập</button>
                         </div>
                     </div>
                 </form>
 
-                <p>- OR -</p>
+                <p>- Hoặc -</p>
 
                 <p class="mb-1">
-                    <a routerLink="/register">Register</a>
+                    <a routerLink="/register">Đăng ký</a>
                 </p>
                 <p class="mb-0">
-                    <a routerLink="/request-password-reset">I forgot my password</a>
+                    <a routerLink="/request-password-reset">Quên mật khẩu</a>
                 </p>
             </div>
         </div>

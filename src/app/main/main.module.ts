@@ -17,6 +17,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { ImageModule } from 'primeng/image';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MessageModule } from 'primeng/message';
     InputSwitchModule,
     ReactiveFormsModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    ImageModule
   ]
 })
 export class MainModule { }
