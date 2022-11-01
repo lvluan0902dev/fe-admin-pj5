@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </p-toolbar>
-            <p-table [value]="sliders" [lazy]="true" (onLazyLoad)="loadCustomers($event)" [totalRecords]="totalRecords"
+            <p-table [value]="sliders" [lazy]="true" (onLazyLoad)="loadCustomers($event)" [totalRecords]="totalResult"
                 [loading]="loading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
                 [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['title','content']">
                 <ng-template pTemplate="header">
@@ -65,6 +65,16 @@
                         <td>{{slider.created_at|date:'longDate'}}</td>
                         <td>{{slider.status == 1 ? 'Bật' : 'Tắt'}}</td>
                     </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <div *ngIf="totalResult == total">
+                            Có tổng số {{totalResult}}
+                        </div>
+                        <div *ngIf="totalResult != total">
+                            Có {{totalResult}} trên tổng số {{total}}
+                        </div>
+                    </div>
                 </ng-template>
             </p-table>
         </div>

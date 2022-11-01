@@ -13,7 +13,8 @@ import { environment } from 'src/environments/environment';
 export class SliderListComponent implements OnInit {
   public url = environment.url + '/';
   public sliders: Slider[] = [];
-  public totalRecords: number = 0;
+  public totalResult: number = 0;
+  public total: number = 0;
   public loading: boolean = true;
   public event: any;
   public search_input: string = '';
@@ -36,7 +37,8 @@ export class SliderListComponent implements OnInit {
     setTimeout(() => {
       this.sliderService.list(this.event).subscribe((response) => {
         this.sliders = response.data;
-        this.totalRecords = response.total_result;
+        this.totalResult = response.total_result;
+        this.total = response.total;
         this.loading = false;
       })
     }, 1000);
@@ -48,7 +50,8 @@ export class SliderListComponent implements OnInit {
     this.event.searchInput = this.search_input;
     this.sliderService.list(this.event).subscribe(response => {
       this.sliders = response.data;
-      this.totalRecords = response.total_result;
+      this.totalResult = response.total_result;
+      this.total = response.total;
       this.loading = false;
     })
   }
