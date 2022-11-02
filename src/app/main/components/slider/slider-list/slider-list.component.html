@@ -26,7 +26,8 @@
                 <div class="p-toolbar-group-right">
                     <div class="p-d-flex">
                         <span class="p-ml-auto">
-                            <input pInputText type="text" class="p-inputtext-sm" #search_input placeholder="Tiêu đề, Nội dung" />
+                            <input pInputText type="text" class="p-inputtext-sm" #search_input
+                                placeholder="Tiêu đề, Nội dung" />
                             <p-button icon="pi pi-search" styleClass="p-button-sm" (click)="search(search_input.value)">
                             </p-button>
                         </span>
@@ -46,7 +47,8 @@
                         <th>Hình ảnh</th>
                         <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="status">Trạng thái <p-sortIcon field="status"></p-sortIcon></th>
+                        <th pSortableColumn="status">Trạng thái <p-sortIcon field="status"></p-sortIcon>
+                        </th>
                         <th>#</th>
                     </tr>
                 </ng-template>
@@ -56,15 +58,18 @@
                         <td [innerHTML]="slider.content"></td>
                         <td>{{slider.link}}</td>
                         <td>
-                            <p-image [src]="url + slider.image_path" [alt]="slider.image_name" [preview]="true" width="250"></p-image>
+                            <p-image [src]="url + slider.image_path" [alt]="slider.image_name" [preview]="true"
+                                width="250"></p-image>
                         </td>
                         <td>{{slider.created_at|date:'longDate'}}</td>
                         <td>{{slider.status == 1 ? 'Bật' : 'Tắt'}}</td>
                         <td>
                             <a [routerLink]="['/slider/edit', slider.id]">
-                                <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
+                                <button pButton icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
                             </a>
-                            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-sm p-button-warning mb-2"></button>
+                            <button pButton icon="pi pi-trash"
+                                class="p-button-rounded p-button-sm p-button-warning mb-2"></button>
                         </td>
                     </tr>
                 </ng-template>
