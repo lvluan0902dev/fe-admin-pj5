@@ -26,11 +26,11 @@ export class AuthService {
     this.loggedIn.next(value);
   }
 
-  public login(data: object) {
+  public login(data: any) {
     return this.httpService.post('login', data, httpOptions);
   }
 
-  public register(data: object) {
+  public register(data: any) {
     return this.httpService.post('register', data, httpOptions);
   }
 
