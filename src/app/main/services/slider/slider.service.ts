@@ -45,4 +45,8 @@ export class SliderService {
     let payload = data;
     return this.httpService.post('slider/edit', payload, httpOptions);
   }
+
+  public delete(id: any) {
+    return this.httpService.delete('slider/delete/' + id, httpOptions);
+  }
 }

@@ -31,33 +31,32 @@ export class SliderListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loading = true;
+    
   }
 
-  public loadSliders(event: LazyLoadEvent) {
-    this.loading = true;
+  public load(event: LazyLoadEvent) {
+    this.setLoadingStatus(true);
     this.event = event;
     this.event.searchInput = this.search_input;
     setTimeout(() => {
-      this.sliderService.list(this.event).subscribe((response) => {
-        this.sliders = response.data;
-        this.totalResult = response.total_result;
-        this.total = response.total;
-        this.loading = false;
-      })
+      this.loadData();
     }, 1000);
   }
 
   public search(value: string) {
-    this.loading = true;
+    this.setLoadingStatus(true);
     this.search_input = value;
     this.event.searchInput = this.search_input;
-    this.sliderService.list(this.event).subscribe(response => {
+    this.loadData();
+  }
+
+  private loadData() {
+    this.sliderService.list(this.event).subscribe((response) => {
       this.sliders = response.data;
       this.totalResult = response.total_result;
       this.total = response.total;
-      this.loading = false;
-    })
+      this.setLoadingStatus(false);
+    });
   }
 
   public delete(id: number) {
@@ -66,12 +65,24 @@ export class SliderListComponent implements OnInit {
       header: 'Xoá',
       icon: 'pi pi-info-circle',
       accept: () => {
-        
+        this.sliderService.delete(id).subscribe((response) => {
+          if (response.success == 1) {
+            this.toastService.success('Thành công', response.message);
+            this.setLoadingStatus(true);
+            this.loadData();
+          } else {
+            this.toastService.error('Lỗi', response.message);
+          }
+        });
       },
       reject: () => {
 
       },
       key: "positionDialog"
     });
+  }
+
+  private setLoadingStatus(status: boolean) {
+    this.loading = status;
   }
 }
