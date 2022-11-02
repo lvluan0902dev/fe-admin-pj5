@@ -31,6 +31,6 @@ export class SidebarComponent implements OnInit {
     this.tokenService.remove();
     this.authService.changeAuthStatus(false);
     this.router.navigateByUrl('/login');
-    this.toastService.success('Success', 'Logout Success');
+    this.toastService.success('Thành công', 'Đăng xuất thành công');
   }
 }

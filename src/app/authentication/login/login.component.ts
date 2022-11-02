@@ -47,6 +47,6 @@ export class LoginComponent implements OnInit {
     this.tokenService.set(data.access_token);
     this.authService.changeAuthStatus(true);
     this.router.navigateByUrl('/dashboard');
-    this.toastService.success('Success', 'Login Success');
+    this.toastService.success('Thành công', 'Đăng nhập thành công');
   }
 }

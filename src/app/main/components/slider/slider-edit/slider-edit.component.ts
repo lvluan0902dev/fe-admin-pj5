@@ -91,11 +91,11 @@ export class SliderEditComponent implements OnInit {
 
       this.sliderService.edit(formData).subscribe((response) => {
         if (response.success == 1) {
-          this.toastService.success('Success', response.message);
+          this.toastService.success('Thành công', response.message);
           this.submitted = false;
           this.form.reset();
         } else {
-          this.toastService.error('Have something error', response.message);
+          this.toastService.error('Lỗi', response.message);
         }
       });
     } else {
@@ -117,10 +117,10 @@ export class SliderEditComponent implements OnInit {
 
       this.sliderService.edit(formData).subscribe((response) => {
         if (response.success == 1) {
-          this.toastService.success('Success', response.message);
+          this.toastService.success('Thành công', response.message);
           this.router.navigateByUrl('/slider/list');
         } else {
-          this.toastService.error('Error', response.message);
+          this.toastService.error('Lỗi', response.message);
         }
       });
     } else {

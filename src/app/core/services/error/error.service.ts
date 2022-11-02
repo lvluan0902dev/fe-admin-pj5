@@ -25,7 +25,7 @@ export class ErrorService {
       ErrorService.router.navigateByUrl('/login');
     }
 
-    ErrorService.toastService.error('Error', error.message);
+    ErrorService.toastService.error('Lỗi', error.message);
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }
