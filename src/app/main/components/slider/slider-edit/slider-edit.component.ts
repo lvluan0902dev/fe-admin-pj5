@@ -82,10 +82,15 @@ export class SliderEditComponent implements OnInit {
       if (files?.length) {
         formData.set('image', files[0]);
       }
+      // else {
+      //   formData.append('image', '');
+      // }
 
-      this.sliderService.add(formData).subscribe((response) => {
+      formData.append('id', String(this.slider.id));
+
+      this.sliderService.edit(formData).subscribe((response) => {
         if (response.success == 1) {
-          this.toastService.success('Added successfully', response.message);
+          this.toastService.success('Success', response.message);
           this.submitted = false;
           this.form.reset();
         } else {
@@ -93,7 +98,7 @@ export class SliderEditComponent implements OnInit {
         }
       });
     } else {
-      console.log(this.form);
+      // Do something
     }
   }
 
@@ -109,7 +114,7 @@ export class SliderEditComponent implements OnInit {
         formData.set('image', files[0]);
       }
 
-      this.sliderService.add(formData).subscribe((response) => {
+      this.sliderService.edit(formData).subscribe((response) => {
         if (response.success == 1) {
           this.toastService.success('Success', response.message);
           this.router.navigateByUrl('/slider/list');
@@ -118,7 +123,7 @@ export class SliderEditComponent implements OnInit {
         }
       });
     } else {
-      console.log(this.form);
+      // Do something
     }
   }
 }

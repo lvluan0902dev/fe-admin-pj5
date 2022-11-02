@@ -40,4 +40,9 @@ export class SliderService {
   public get(id: any) {
     return this.httpService.get('slider/get/' + id, httpOptions);
   }
+
+  public edit(data: any) {
+    let payload = data;
+    return this.httpService.put('slider/edit', payload, httpOptions);
+  }
 }
