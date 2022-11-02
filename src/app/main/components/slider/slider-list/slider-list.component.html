@@ -58,7 +58,7 @@
                         <td [innerHTML]="slider.content"></td>
                         <td>{{slider.link}}</td>
                         <td>
-                            <p-image [src]="url + slider.image_path" [alt]="slider.image_name" [preview]="true"
+                            <p-image *ngIf="slider.image_path" [src]="url + slider.image_path" [alt]="slider.image_name" [preview]="true"
                                 width="250"></p-image>
                         </td>
                         <td>{{slider.created_at|date:'longDate'}}</td>

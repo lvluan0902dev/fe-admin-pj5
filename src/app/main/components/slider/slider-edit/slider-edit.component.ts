@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
 import { Slider } from 'src/app/main/models/slider/slider.model';
 import { SliderService } from 'src/app/main/services/slider/slider.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-slider-edit',
@@ -16,15 +17,16 @@ export class SliderEditComponent implements OnInit {
     title: ['', [Validators.required]],
     content: ['', [Validators.required]],
     link: ['', [Validators.required]],
-    image: ['', [Validators.required]],
+    image: ['', []],
     status: [true, []],
   });
 
   public submitted: boolean = false;
+  public url = environment.url + '/';
   private id: any;
-  private slider?: Slider;
-  public image_name: string | undefined;
-  public image_path: string | undefined;
+  private slider!: Slider;
+  public image_name: string = '';
+  public image_path: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -46,7 +48,7 @@ export class SliderEditComponent implements OnInit {
     this.sliderService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
         this.slider = response.data;
-        this.setImage(this.slider?.image_name, this.slider?.image_path);
+        this.setImage(this.slider.image_name, this.slider.image_path);
         this.setForm(this.slider);
       } else {
         this.toastService.error('Error', response.message);
@@ -59,12 +61,12 @@ export class SliderEditComponent implements OnInit {
       title: [data.title, [Validators.required]],
       content: [data.content, [Validators.required]],
       link: [data.link, [Validators.required]],
-      image: ['', [Validators.required]],
+      image: ['', []],
       status: [data.status == 1 ? true : false, []],
     });
   }
 
-  private setImage(image_name: string | undefined, image_path: string | undefined) {
+  private setImage(image_name: string, image_path: string) {
     this.image_name = image_name;
     this.image_path = image_path;
   }
