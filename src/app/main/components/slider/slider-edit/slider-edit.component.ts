@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-slider-edit',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliderEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private title: Title
+  ) {
+    this.title.setTitle('Sửa slider');
+  }
 
   ngOnInit(): void {
+    console.log(this.activatedRoute.snapshot.paramMap.get('id'));
   }
 
 }

@@ -35,7 +35,7 @@ const routes: Routes = [
             component: SliderAddComponent
           },
           {
-            path: 'edit',
+            path: 'edit/:id',
             component: SliderEditComponent
           }
         ]

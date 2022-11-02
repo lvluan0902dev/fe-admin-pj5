@@ -20,9 +20,6 @@
             <p-toolbar>
                 <div class="p-toolbar-group-left">
                     <a routerLink="/slider/add">
-                        <!-- <button pButton pRipple type="button" label="Thêm" class="p-button-outlined p-button-success"
-                            icon="pi pi-plus-circle">
-                        </button> -->
                         <button pButton label="Thêm" icon="pi pi-plus" class="p-button-success p-button-sm"></button>
                     </a>
                 </div>
@@ -64,6 +61,12 @@
                         </td>
                         <td>{{slider.created_at|date:'longDate'}}</td>
                         <td>{{slider.status == 1 ? 'Bật' : 'Tắt'}}</td>
+                        <td>
+                            <a [routerLink]="['/slider/edit', slider.id]">
+                                <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
+                            </a>
+                            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-sm p-button-warning mb-2"></button>
+                        </td>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="summary">
