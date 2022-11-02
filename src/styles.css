@@ -19,3 +19,8 @@ input::file-selector-button {
     box-shadow: unset !important;
     border-color: #ced4da !important;
 }
+
+/* Fix content height */
+.content-wrapper {
+    height: auto !important;
+}
