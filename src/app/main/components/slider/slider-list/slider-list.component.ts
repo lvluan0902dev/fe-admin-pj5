@@ -34,7 +34,7 @@ export class SliderListComponent implements OnInit {
     this.loading = true;
   }
 
-  public loadCustomers(event: LazyLoadEvent) {
+  public loadSliders(event: LazyLoadEvent) {
     this.loading = true;
     this.event = event;
     this.event.searchInput = this.search_input;

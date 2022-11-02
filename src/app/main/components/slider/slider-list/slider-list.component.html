@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </p-toolbar>
-            <p-table [value]="sliders" [lazy]="true" (onLazyLoad)="loadCustomers($event)" [totalRecords]="totalResult"
+            <p-table [value]="sliders" [lazy]="true" (onLazyLoad)="loadSliders($event)" [totalRecords]="totalResult"
                 [loading]="loading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
                 [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['title','content']">
                 <ng-template pTemplate="header">
