@@ -43,6 +43,6 @@ export class SliderService {
 
   public edit(data: any) {
     let payload = data;
-    return this.httpService.put('slider/edit', payload, httpOptions);
+    return this.httpService.post('slider/edit', payload, httpOptions);
   }
 }

@@ -75,6 +75,10 @@ export class SliderEditComponent implements OnInit {
     this.submitted = true;
     if (this.form.status == 'VALID') {
       var formData = new FormData();
+
+      // Set PUT method
+      formData.append('_method', 'PUT');
+
       var data = this.form.value as any;
       for (let key of Object.keys(data)) {
         formData.append(key, data[key])
@@ -82,9 +86,6 @@ export class SliderEditComponent implements OnInit {
       if (files?.length) {
         formData.set('image', files[0]);
       }
-      // else {
-      //   formData.append('image', '');
-      // }
 
       formData.append('id', String(this.slider.id));
 
