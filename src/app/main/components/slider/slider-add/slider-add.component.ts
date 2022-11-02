@@ -56,7 +56,7 @@ export class SliderAddComponent implements OnInit {
         }
       });
     } else {
-      console.log(this.form);
+      // Do something
     }
   }
 
@@ -81,7 +81,7 @@ export class SliderAddComponent implements OnInit {
         }
       });
     } else {
-      console.log(this.form);
+      // Do something
     }
   }
 }
