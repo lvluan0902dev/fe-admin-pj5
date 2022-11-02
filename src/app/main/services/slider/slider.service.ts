@@ -18,6 +18,10 @@ export class SliderService {
   ) { }
 
   public list(data: any) {
+    if (data.sortField == undefined || data.sortField == '') {
+      data.sortOrder = 0;
+    }
+
     let payload = {
       first_row: data.first,
       per_page: data.rows == undefined ? 0 : data.rows,
@@ -31,5 +35,9 @@ export class SliderService {
   public add(data: any) {
     let payload = data;
     return this.httpService.post('slider/add', payload, httpOptions);
+  }
+
+  public get(id: any) {
+    return this.httpService.get('slider/get/' + id, httpOptions);
   }
 }

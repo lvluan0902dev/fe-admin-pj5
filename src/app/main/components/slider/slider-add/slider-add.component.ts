@@ -17,7 +17,7 @@ export class SliderAddComponent implements OnInit {
     link: ['', [Validators.required]],
     image: ['', [Validators.required]],
     status: [true, []],
-  })
+  });
 
   public submitted: boolean = false;
 
