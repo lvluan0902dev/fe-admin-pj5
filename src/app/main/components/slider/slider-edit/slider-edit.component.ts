@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
+import { Slider } from 'src/app/main/models/slider/slider.model';
 import { SliderService } from 'src/app/main/services/slider/slider.service';
 
 @Component({
@@ -21,6 +22,9 @@ export class SliderEditComponent implements OnInit {
 
   public submitted: boolean = false;
   private id: any;
+  private slider?: Slider;
+  public image_name: string | undefined;
+  public image_path: string | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,9 +44,29 @@ export class SliderEditComponent implements OnInit {
 
   public get() {
     this.sliderService.get(this.id).subscribe((response) => {
-      console.log(response);
-      
+      if (response.success == 1) {
+        this.slider = response.data;
+        this.setImage(this.slider?.image_name, this.slider?.image_path);
+        this.setForm(this.slider);
+      } else {
+        this.toastService.error('Error', response.message);
+      }
     });
+  }
+
+  private setForm(data: any) {
+    this.form = this.fb.group({
+      title: [data.title, [Validators.required]],
+      content: [data.content, [Validators.required]],
+      link: [data.link, [Validators.required]],
+      image: ['', [Validators.required]],
+      status: [data.status == 1 ? true : false, []],
+    });
+  }
+
+  private setImage(image_name: string | undefined, image_path: string | undefined) {
+    this.image_name = image_name;
+    this.image_path = image_path;
   }
 
   public save(files: FileList | null) {

@@ -21,7 +21,8 @@
                     <div class="form-group">
                         <label>Tiêu đề <span class="required-color">*</span></label>
                         <div>
-                            <input type="text" class="p-inputtext-sm with-100percent" pInputText formControlName="title" />
+                            <input type="text" class="p-inputtext-sm with-100percent" pInputText
+                                formControlName="title" />
                         </div>
                         <div *ngIf="form.controls.title.invalid && submitted">
                             <div *ngIf="form.controls.title.errors?.['required']">
@@ -34,7 +35,8 @@
                     <div class="form-group">
                         <label>Đường dẫn <span class="required-color">*</span></label>
                         <div>
-                            <input type="text" class="p-inputtext-sm with-100percent" pInputText formControlName="link" />
+                            <input type="text" class="p-inputtext-sm with-100percent" pInputText
+                                formControlName="link" />
                         </div>
                         <div *ngIf="form.controls.link.invalid && submitted">
                             <div *ngIf="form.controls.link.errors?.['required']">
@@ -61,14 +63,15 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Hình ảnh <span class="required-color">*</span></label>
-                            <div>
-                                <input #fileInput type="file" class="with-100percent" id="file-input" accept="image/*" formControlName="image">
+                        <div>
+                            <input #fileInput type="file" class="with-100percent" id="file-input" accept="image/*"
+                                formControlName="image">
+                        </div>
+                        <div *ngIf="form.controls.image.invalid && submitted">
+                            <div *ngIf="form.controls.image.errors?.['required']">
+                                <small class="p-error">Hình ảnh là bắt buộc</small>
                             </div>
-                            <div *ngIf="form.controls.image.invalid && submitted">
-                                <div *ngIf="form.controls.image.errors?.['required']">
-                                    <small class="p-error">Hình ảnh là bắt buộc</small>
-                                </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,8 +87,10 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button pButton label="Lưu" class="p-button-primary p-button-sm mr-2" (click)="save(fileInput.files)"></button>
-                    <button pButton label="Lưu và trở về" class="p-button-help p-button-sm mr-2" (click)="saveAndBack(fileInput.files)"></button>
+                    <button pButton label="Lưu" class="p-button-primary p-button-sm mr-2"
+                        (click)="save(fileInput.files)"></button>
+                    <button pButton label="Lưu và trở về" class="p-button-help p-button-sm mr-2"
+                        (click)="saveAndBack(fileInput.files)"></button>
                     <a routerLink="/slider/list">
                         <button pButton label="Trở về" class="p-button-secondary p-button-sm"></button>
                     </a>
