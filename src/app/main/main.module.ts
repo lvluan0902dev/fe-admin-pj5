@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ImageModule } from 'primeng/image';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ImageModule } from 'primeng/image';
     ReactiveFormsModule,
     MessagesModule,
     MessageModule,
-    ImageModule
+    ImageModule,
+    ConfirmDialogModule
   ]
 })
 export class MainModule { }

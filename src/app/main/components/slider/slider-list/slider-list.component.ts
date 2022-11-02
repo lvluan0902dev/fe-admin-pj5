@@ -4,6 +4,8 @@ import { LazyLoadEvent } from 'primeng/api';
 import { Slider } from 'src/app/main/models/slider/slider.model';
 import { SliderService } from 'src/app/main/services/slider/slider.service';
 import { environment } from 'src/environments/environment';
+import { ConfirmationService } from 'primeng/api';
+import { ToastService } from 'src/app/core/services/toast/toast.service';
 
 @Component({
   selector: 'app-slider-list',
@@ -21,7 +23,9 @@ export class SliderListComponent implements OnInit {
 
   constructor(
     private sliderService: SliderService,
-    private title: Title
+    private title: Title,
+    private confirmationService: ConfirmationService,
+    private toastService: ToastService,
   ) {
     this.title.setTitle('Danh sách Slider');
   }
@@ -54,5 +58,20 @@ export class SliderListComponent implements OnInit {
       this.total = response.total;
       this.loading = false;
     })
+  }
+
+  public delete(id: number) {
+    this.confirmationService.confirm({
+      message: 'Bạn có muốn xoá?',
+      header: 'Xoá',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        
+      },
+      reject: () => {
+
+      },
+      key: "positionDialog"
+    });
   }
 }
