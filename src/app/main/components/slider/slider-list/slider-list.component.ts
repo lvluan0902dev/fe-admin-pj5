@@ -14,7 +14,7 @@ import { ToastService } from 'src/app/core/services/toast/toast.service';
 })
 export class SliderListComponent implements OnInit {
   public url = environment.url + '/';
-  public sliders: Slider[] = [];
+  public datas: Slider[] = [];
   public totalResult: number = 0;
   public total: number = 0;
   public loading: boolean = true;
@@ -31,7 +31,7 @@ export class SliderListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   public load(event: LazyLoadEvent) {
@@ -52,7 +52,7 @@ export class SliderListComponent implements OnInit {
 
   private loadData() {
     this.sliderService.list(this.event).subscribe((response) => {
-      this.sliders = response.data;
+      this.datas = response.data;
       this.totalResult = response.total_result;
       this.total = response.total;
       this.setLoadingStatus(false);
