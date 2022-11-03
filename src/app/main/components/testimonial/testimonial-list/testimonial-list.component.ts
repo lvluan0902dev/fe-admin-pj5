@@ -76,7 +76,7 @@ export class TestimonialListComponent implements OnInit {
       reject: () => {
 
       },
-      key: "positionDialog"
+      key: "topDialog"
     });
   }
 

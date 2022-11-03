@@ -78,7 +78,7 @@ export class SliderListComponent implements OnInit {
       reject: () => {
 
       },
-      key: "positionDialog"
+      key: "topDialog"
     });
   }
 
