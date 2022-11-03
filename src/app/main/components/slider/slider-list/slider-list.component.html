@@ -36,7 +36,7 @@
             </p-toolbar>
             <p-table [value]="datas" [lazy]="true" (onLazyLoad)="load($event)" [totalRecords]="totalResult"
                 [loading]="loading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
-                [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['title','content']">
+                [rowsPerPageOptions]="[10,25,50]">
                 <ng-template pTemplate="header">
                     <tr>
                         <th pSortableColumn="title">Tiêu đề <p-sortIcon field="title"></p-sortIcon>
