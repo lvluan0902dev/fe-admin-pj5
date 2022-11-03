@@ -19,6 +19,9 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ImageModule } from 'primeng/image';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TestimonialListComponent } from './components/testimonial/testimonial-list/testimonial-list.component';
+import { TestimonialAddComponent } from './components/testimonial/testimonial-add/testimonial-add.component';
+import { TestimonialEditComponent } from './components/testimonial/testimonial-edit/testimonial-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     SliderListComponent,
     SliderAddComponent,
     SliderEditComponent,
+    TestimonialListComponent,
+    TestimonialAddComponent,
+    TestimonialEditComponent,
   ],
   imports: [
     CommonModule,
