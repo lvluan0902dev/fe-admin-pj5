@@ -23,6 +23,7 @@ import { TestimonialListComponent } from './components/testimonial/testimonial-l
 import { TestimonialAddComponent } from './components/testimonial/testimonial-add/testimonial-add.component';
 import { TestimonialEditComponent } from './components/testimonial/testimonial-edit/testimonial-edit.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { EditorModule as ETiny, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 
 @NgModule({
@@ -51,7 +52,11 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     MessageModule,
     ImageModule,
     ConfirmDialogModule,
-    InputTextareaModule
+    InputTextareaModule,
+    ETiny
+  ],
+  providers: [
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
   ]
 })
 export class MainModule { }

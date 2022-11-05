@@ -50,7 +50,27 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Nội dung <span class="required-color">*</span></label>
-                        <p-editor [style]="{'height':'320px'}" formControlName="content"></p-editor>
+                        <!-- <p-editor [style]="{'height':'320px'}" formControlName="content"></p-editor> -->
+                        <editor apiKey="8j7su2hn4okmz32icrx43famupx36ujqadijpi0zzemwh2i5" id="content" formControlName="content"
+    [init]="{
+                                base_url: '/tinymce',
+                                suffix: '.min',
+                                height: 500,
+                                menubar: true,
+                                plugins: [
+                                'advlist autolink lists link image charmap print preview anchor codesample',
+                                'searchreplace visualblocks code fullscreen image imagetools',
+                                'insertdatetime media table paste code help wordcount'
+                                ],
+                                codesample_languages: [
+                                { text: 'TypeScript', value: 'typescript' },
+                                { text: 'JavaScript', value: 'javascript' },
+                                { text: 'HTML/XML', value: 'markup' },
+                                { text: 'CSS', value: 'css' }
+                                ],
+                                toolbar:
+                                'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image media codesample'}">
+</editor>
                         <div *ngIf="form.controls.content.invalid && submitted">
                             <div *ngIf="form.controls.content.errors?.['required']">
                                 <small class="p-error">Nội dung là bắt buộc</small>
