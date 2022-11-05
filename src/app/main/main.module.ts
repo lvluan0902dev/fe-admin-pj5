@@ -24,6 +24,7 @@ import { TestimonialAddComponent } from './components/testimonial/testimonial-ad
 import { TestimonialEditComponent } from './components/testimonial/testimonial-edit/testimonial-edit.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { EditorModule as ETiny, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
+import { SafeHtmlPipe } from '../core/handlers/safe-html/safe-html.pipe';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { EditorModule as ETiny, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angu
     TestimonialListComponent,
     TestimonialAddComponent,
     TestimonialEditComponent,
+    SafeHtmlPipe
   ],
   imports: [
     CommonModule,
