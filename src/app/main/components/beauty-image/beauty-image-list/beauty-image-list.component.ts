@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
-import { BeautyImage } from 'src/app/main/models/beauty-image.model';
+import { BeautyImage } from 'src/app/main/models/beauty-image/beauty-image.model';
 import { BeautyImageService } from 'src/app/main/services/beauty-image/beauty-image.service';
 import { environment } from 'src/environments/environment';
 
