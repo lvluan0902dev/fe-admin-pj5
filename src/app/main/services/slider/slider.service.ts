@@ -12,6 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SliderService {
+  private url = 'slider/';
 
   constructor(
     private httpService: HttpService
@@ -29,24 +30,24 @@ export class SliderService {
       sort_type: data.sortOrder == 1 ? 'ASC' : 'DESC',
       search: data.searchInput
     };
-    return this.httpService.post('slider/list', payload, httpOptions);
+    return this.httpService.post(this.url + 'list', payload, httpOptions);
   }
 
   public add(data: any) {
     let payload = data;
-    return this.httpService.post('slider/add', payload, httpOptions);
+    return this.httpService.post(this.url + 'add', payload, httpOptions);
   }
 
   public get(id: any) {
-    return this.httpService.get('slider/get/' + id, httpOptions);
+    return this.httpService.get(this.url + 'get/' + id, httpOptions);
   }
 
   public edit(data: any) {
     let payload = data;
-    return this.httpService.post('slider/edit', payload, httpOptions);
+    return this.httpService.post(this.url + 'edit', payload, httpOptions);
   }
 
   public delete(id: any) {
-    return this.httpService.delete('slider/delete/' + id, httpOptions);
+    return this.httpService.delete(this.url + 'delete/' + id, httpOptions);
   }
 }

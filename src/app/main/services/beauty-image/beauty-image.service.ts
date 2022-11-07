@@ -12,6 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BeautyImageService {
+  private url = 'beauty-image/';
 
   constructor(
     private httpService: HttpService
@@ -29,24 +30,24 @@ export class BeautyImageService {
       sort_type: data.sortOrder == 1 ? 'ASC' : 'DESC',
       search: data.searchInput
     };
-    return this.httpService.post('beauty-image/list', payload, httpOptions);
+    return this.httpService.post(this.url + 'list', payload, httpOptions);
   }
 
   public add(data: any) {
     let payload = data;
-    return this.httpService.post('beauty-image/add', payload, httpOptions);
+    return this.httpService.post(this.url + 'add', payload, httpOptions);
   }
 
   public get(id: any) {
-    return this.httpService.get('beauty-image/get/' + id, httpOptions);
+    return this.httpService.get(this.url + 'get/' + id, httpOptions);
   }
 
   public edit(data: any) {
     let payload = data;
-    return this.httpService.post('beauty-image/edit', payload, httpOptions);
+    return this.httpService.post(this.url + 'edit', payload, httpOptions);
   }
 
   public delete(id: any) {
-    return this.httpService.delete('beauty-image/delete/' + id, httpOptions);
+    return this.httpService.delete(this.url + 'delete/' + id, httpOptions);
   }
 }
