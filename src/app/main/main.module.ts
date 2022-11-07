@@ -25,6 +25,9 @@ import { TestimonialEditComponent } from './components/testimonial/testimonial-e
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { SafeHtmlPipe } from '../core/handlers/safe-html/safe-html.pipe';
+import { BeautyImageListComponent } from './components/beauty-image/beauty-image-list/beauty-image-list.component';
+import { BeautyImageAddComponent } from './components/beauty-image/beauty-image-add/beauty-image-add.component';
+import { BeautyImageEditComponent } from './components/beauty-image/beauty-image-edit/beauty-image-edit.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { SafeHtmlPipe } from '../core/handlers/safe-html/safe-html.pipe';
     TestimonialListComponent,
     TestimonialAddComponent,
     TestimonialEditComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    BeautyImageListComponent,
+    BeautyImageAddComponent,
+    BeautyImageEditComponent,
   ],
   imports: [
     CommonModule,

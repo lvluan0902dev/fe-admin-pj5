@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BeautyImageAddComponent } from './components/beauty-image/beauty-image-add/beauty-image-add.component';
+import { BeautyImageEditComponent } from './components/beauty-image/beauty-image-edit/beauty-image-edit.component';
+import { BeautyImageListComponent } from './components/beauty-image/beauty-image-list/beauty-image-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SliderAddComponent } from './components/slider/slider-add/slider-add.component';
 import { SliderEditComponent } from './components/slider/slider-edit/slider-edit.component';
@@ -61,6 +64,27 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: TestimonialEditComponent
+          }
+        ]
+      },
+      {
+        path: 'beauty-image',
+        children: [
+          {
+            path: '',
+            component: BeautyImageListComponent
+          },
+          {
+            path: 'list',
+            component: BeautyImageListComponent
+          },
+          {
+            path: 'add',
+            component: BeautyImageAddComponent
+          },
+          {
+            path: 'edit/:id',
+            component: BeautyImageEditComponent
           }
         ]
       }
