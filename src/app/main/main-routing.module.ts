@@ -4,6 +4,9 @@ import { BeautyImageAddComponent } from './components/beauty-image/beauty-image-
 import { BeautyImageEditComponent } from './components/beauty-image/beauty-image-edit/beauty-image-edit.component';
 import { BeautyImageListComponent } from './components/beauty-image/beauty-image-list/beauty-image-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FaqAddComponent } from './components/faq/faq-add/faq-add.component';
+import { FaqEditComponent } from './components/faq/faq-edit/faq-edit.component';
+import { FaqListComponent } from './components/faq/faq-list/faq-list.component';
 import { SliderAddComponent } from './components/slider/slider-add/slider-add.component';
 import { SliderEditComponent } from './components/slider/slider-edit/slider-edit.component';
 import { SliderListComponent } from './components/slider/slider-list/slider-list.component';
@@ -87,7 +90,28 @@ const routes: Routes = [
             component: BeautyImageEditComponent
           }
         ]
-      }
+      },
+      {
+        path: 'faq',
+        children: [
+          {
+            path: '',
+            component: FaqListComponent
+          },
+          {
+            path: 'list',
+            component: FaqListComponent
+          },
+          {
+            path: 'add',
+            component: FaqAddComponent
+          },
+          {
+            path: 'edit/:id',
+            component: FaqEditComponent
+          }
+        ]
+      },
     ]
   }
 ];

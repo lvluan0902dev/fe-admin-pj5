@@ -28,6 +28,9 @@ import { SafeHtmlPipe } from '../core/handlers/safe-html/safe-html.pipe';
 import { BeautyImageListComponent } from './components/beauty-image/beauty-image-list/beauty-image-list.component';
 import { BeautyImageAddComponent } from './components/beauty-image/beauty-image-add/beauty-image-add.component';
 import { BeautyImageEditComponent } from './components/beauty-image/beauty-image-edit/beauty-image-edit.component';
+import { FaqListComponent } from './components/faq/faq-list/faq-list.component';
+import { FaqAddComponent } from './components/faq/faq-add/faq-add.component';
+import { FaqEditComponent } from './components/faq/faq-edit/faq-edit.component';
 
 
 @NgModule({
@@ -44,6 +47,9 @@ import { BeautyImageEditComponent } from './components/beauty-image/beauty-image
     BeautyImageListComponent,
     BeautyImageAddComponent,
     BeautyImageEditComponent,
+    FaqListComponent,
+    FaqAddComponent,
+    FaqEditComponent,
   ],
   imports: [
     CommonModule,

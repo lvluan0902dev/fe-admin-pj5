@@ -3,28 +3,26 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
-import { Slider } from 'src/app/main/models/slider/slider.model';
-import { SliderService } from 'src/app/main/services/slider/slider.service';
+import { Faq } from 'src/app/main/models/faq/faq.model';
+import { FaqService } from 'src/app/main/services/faq/faq.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-slider-edit',
-  templateUrl: './slider-edit.component.html',
-  styleUrls: ['./slider-edit.component.css']
+  selector: 'app-faq-edit',
+  templateUrl: './faq-edit.component.html',
+  styleUrls: ['./faq-edit.component.css']
 })
-export class SliderEditComponent implements OnInit {
+export class FaqEditComponent implements OnInit {
   public form = this.fb.group({
     title: ['', [Validators.required]],
     content: ['', [Validators.required]],
-    link: ['', [Validators.required]],
-    image: ['', []],
     status: [true, []],
   });
 
   public submitted: boolean = false;
   public url = environment.url + '/';
   private id: any;
-  private slider!: Slider;
+  private faq!: Faq;
   public image_name: string = '';
   public image_path: string = '';
 
@@ -34,9 +32,9 @@ export class SliderEditComponent implements OnInit {
     private fb: FormBuilder,
     private toastService: ToastService,
     private router: Router,
-    private sliderService: SliderService,
+    private faqService: FaqService,
   ) {
-    this.title.setTitle('Sửa Slider');
+    this.title.setTitle('Sửa Câu hỏi thường gặp');
   }
 
   ngOnInit(): void {
@@ -45,11 +43,10 @@ export class SliderEditComponent implements OnInit {
   }
 
   public get() {
-    this.sliderService.get(this.id).subscribe((response) => {
+    this.faqService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
-        this.slider = response.data;
-        this.setImage(this.slider.image_name, this.slider.image_path);
-        this.setForm(this.slider);
+        this.faq = response.data;
+        this.setForm(this.faq);
       } else {
         this.toastService.error('Error', response.message);
       }
@@ -60,8 +57,6 @@ export class SliderEditComponent implements OnInit {
     this.form = this.fb.group({
       title: [data.title, [Validators.required]],
       content: [data.content, [Validators.required]],
-      link: [data.link, [Validators.required]],
-      image: ['', []],
       status: [data.status == 1 ? true : false, []],
     });
   }
@@ -87,9 +82,9 @@ export class SliderEditComponent implements OnInit {
         formData.set('image', files[0]);
       }
 
-      formData.append('id', String(this.slider.id));
+      formData.append('id', String(this.faq.id));
 
-      this.sliderService.edit(formData).subscribe((response) => {
+      this.faqService.edit(formData).subscribe((response) => {
         if (response.success == 1) {
           this.toastService.success('Thành công', response.message);
           this.submitted = false;
@@ -118,12 +113,12 @@ export class SliderEditComponent implements OnInit {
         formData.set('image', files[0]);
       }
 
-      formData.append('id', String(this.slider.id));
+      formData.append('id', String(this.faq.id));
 
-      this.sliderService.edit(formData).subscribe((response) => {
+      this.faqService.edit(formData).subscribe((response) => {
         if (response.success == 1) {
           this.toastService.success('Thành công', response.message);
-          this.router.navigateByUrl('/slider/list');
+          this.router.navigateByUrl('/faq/list');
         } else {
           this.toastService.error('Lỗi', response.message);
         }
