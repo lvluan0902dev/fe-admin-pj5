@@ -12,7 +12,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToolbarModule } from 'primeng/toolbar';
-import { EditorModule } from 'primeng/editor';
+// import { EditorModule } from 'primeng/editor';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessagesModule } from 'primeng/messages';
@@ -23,7 +23,7 @@ import { TestimonialListComponent } from './components/testimonial/testimonial-l
 import { TestimonialAddComponent } from './components/testimonial/testimonial-add/testimonial-add.component';
 import { TestimonialEditComponent } from './components/testimonial/testimonial-edit/testimonial-edit.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { EditorModule as ETiny, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
+import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { SafeHtmlPipe } from '../core/handlers/safe-html/safe-html.pipe';
 
 
@@ -54,8 +54,7 @@ import { SafeHtmlPipe } from '../core/handlers/safe-html/safe-html.pipe';
     MessageModule,
     ImageModule,
     ConfirmDialogModule,
-    InputTextareaModule,
-    ETiny
+    InputTextareaModule
   ],
   providers: [
     { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
