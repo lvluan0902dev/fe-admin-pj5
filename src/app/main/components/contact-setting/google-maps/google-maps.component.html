@@ -34,6 +34,18 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
+                        <label>Xem trước</label>
+                        <div>
+                            <div [innerHTML]="form.controls.content.value| safeHtml">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
                         <label>Trạng thái</label>
                         <div>
                             <p-inputSwitch formControlName="status"></p-inputSwitch>
