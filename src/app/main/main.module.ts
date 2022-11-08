@@ -31,6 +31,10 @@ import { BeautyImageEditComponent } from './components/beauty-image/beauty-image
 import { FaqListComponent } from './components/faq/faq-list/faq-list.component';
 import { FaqAddComponent } from './components/faq/faq-add/faq-add.component';
 import { FaqEditComponent } from './components/faq/faq-edit/faq-edit.component';
+import { AddressComponent } from './components/contact-setting/address/address.component';
+import { PhoneNumberComponent } from './components/contact-setting/phone-number/phone-number.component';
+import { EmailComponent } from './components/contact-setting/email/email.component';
+import { GoogleMapsComponent } from './components/contact-setting/google-maps/google-maps.component';
 
 
 @NgModule({
@@ -50,6 +54,10 @@ import { FaqEditComponent } from './components/faq/faq-edit/faq-edit.component';
     FaqListComponent,
     FaqAddComponent,
     FaqEditComponent,
+    AddressComponent,
+    PhoneNumberComponent,
+    EmailComponent,
+    GoogleMapsComponent,
   ],
   imports: [
     CommonModule,

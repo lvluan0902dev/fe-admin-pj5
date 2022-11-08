@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { BeautyImageAddComponent } from './components/beauty-image/beauty-image-add/beauty-image-add.component';
 import { BeautyImageEditComponent } from './components/beauty-image/beauty-image-edit/beauty-image-edit.component';
 import { BeautyImageListComponent } from './components/beauty-image/beauty-image-list/beauty-image-list.component';
+import { AddressComponent } from './components/contact-setting/address/address.component';
+import { EmailComponent } from './components/contact-setting/email/email.component';
+import { GoogleMapsComponent } from './components/contact-setting/google-maps/google-maps.component';
+import { PhoneNumberComponent } from './components/contact-setting/phone-number/phone-number.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FaqAddComponent } from './components/faq/faq-add/faq-add.component';
 import { FaqEditComponent } from './components/faq/faq-edit/faq-edit.component';
@@ -109,6 +113,27 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: FaqEditComponent
+          }
+        ]
+      },
+      {
+        path: 'contact-setting',
+        children: [
+          {
+            path: 'address',
+            component: AddressComponent
+          },
+          {
+            path: 'phone-number',
+            component: PhoneNumberComponent
+          },
+          {
+            path: 'email',
+            component: EmailComponent
+          },
+          {
+            path: 'google-maps',
+            component: GoogleMapsComponent
           }
         ]
       },
