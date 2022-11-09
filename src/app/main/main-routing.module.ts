@@ -11,6 +11,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FaqAddComponent } from './components/faq/faq-add/faq-add.component';
 import { FaqEditComponent } from './components/faq/faq-edit/faq-edit.component';
 import { FaqListComponent } from './components/faq/faq-list/faq-list.component';
+import { ProductCategoryAddComponent } from './components/product-category/product-category-add/product-category-add.component';
+import { ProductCategoryEditComponent } from './components/product-category/product-category-edit/product-category-edit.component';
+import { ProductCategoryListComponent } from './components/product-category/product-category-list/product-category-list.component';
 import { SliderAddComponent } from './components/slider/slider-add/slider-add.component';
 import { SliderEditComponent } from './components/slider/slider-edit/slider-edit.component';
 import { SliderListComponent } from './components/slider/slider-list/slider-list.component';
@@ -134,6 +137,27 @@ const routes: Routes = [
           {
             path: 'google-maps',
             component: GoogleMapsComponent
+          }
+        ]
+      },
+      {
+        path: 'product-category',
+        children: [
+          {
+            path: '',
+            component: ProductCategoryListComponent
+          },
+          {
+            path: 'list',
+            component: ProductCategoryListComponent
+          },
+          {
+            path: 'add',
+            component: ProductCategoryAddComponent
+          },
+          {
+            path: 'edit/:id',
+            component: ProductCategoryEditComponent
           }
         ]
       },

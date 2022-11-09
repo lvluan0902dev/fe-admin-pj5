@@ -35,6 +35,9 @@ import { AddressComponent } from './components/contact-setting/address/address.c
 import { PhoneNumberComponent } from './components/contact-setting/phone-number/phone-number.component';
 import { EmailComponent } from './components/contact-setting/email/email.component';
 import { GoogleMapsComponent } from './components/contact-setting/google-maps/google-maps.component';
+import { ProductCategoryListComponent } from './components/product-category/product-category-list/product-category-list.component';
+import { ProductCategoryAddComponent } from './components/product-category/product-category-add/product-category-add.component';
+import { ProductCategoryEditComponent } from './components/product-category/product-category-edit/product-category-edit.component';
 
 
 @NgModule({
@@ -58,6 +61,9 @@ import { GoogleMapsComponent } from './components/contact-setting/google-maps/go
     PhoneNumberComponent,
     EmailComponent,
     GoogleMapsComponent,
+    ProductCategoryListComponent,
+    ProductCategoryAddComponent,
+    ProductCategoryEditComponent,
   ],
   imports: [
     CommonModule,
