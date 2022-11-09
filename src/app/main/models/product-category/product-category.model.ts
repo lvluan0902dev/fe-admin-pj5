@@ -1,7 +1,6 @@
-export interface Faq {
+export interface ProductCategory {
     id: number,
-    title: string,
-    content: string,
+    name: string,
     status: number,
     created_at: string,
     updated_at: string
