@@ -1,0 +1,58 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Thương hiệu sản phẩm</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item active">Thêm</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tên <span class="required-color">*</span></label>
+                        <div>
+                            <input type="text" class="p-inputtext-sm with-100percent" pInputText
+                                formControlName="name" />
+                        </div>
+                        <div *ngIf="form.controls.name.invalid && submitted">
+                            <div *ngIf="form.controls.name.errors?.['required']">
+                                <small class="p-error">Tên là bắt buộc</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <div>
+                            <p-inputSwitch formControlName="status"></p-inputSwitch>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button pButton label="Lưu" class="p-button-primary p-button-sm mr-2"
+                        (click)="save(null)"></button>
+                    <button pButton label="Lưu và trở về" class="p-button-help p-button-sm mr-2"
+                        (click)="saveAndBack(null)"></button>
+                    <a routerLink="/product-brand/list">
+                        <button pButton label="Trở về" class="p-button-secondary p-button-sm"></button>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

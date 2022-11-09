@@ -38,6 +38,9 @@ import { GoogleMapsComponent } from './components/contact-setting/google-maps/go
 import { ProductCategoryListComponent } from './components/product-category/product-category-list/product-category-list.component';
 import { ProductCategoryAddComponent } from './components/product-category/product-category-add/product-category-add.component';
 import { ProductCategoryEditComponent } from './components/product-category/product-category-edit/product-category-edit.component';
+import { ProductBrandListComponent } from './components/product-brand/product-brand-list/product-brand-list.component';
+import { ProductBrandAddComponent } from './components/product-brand/product-brand-add/product-brand-add.component';
+import { ProductBrandEditComponent } from './components/product-brand/product-brand-edit/product-brand-edit.component';
 
 
 @NgModule({
@@ -64,6 +67,9 @@ import { ProductCategoryEditComponent } from './components/product-category/prod
     ProductCategoryListComponent,
     ProductCategoryAddComponent,
     ProductCategoryEditComponent,
+    ProductBrandListComponent,
+    ProductBrandAddComponent,
+    ProductBrandEditComponent,
   ],
   imports: [
     CommonModule,

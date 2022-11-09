@@ -11,6 +11,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FaqAddComponent } from './components/faq/faq-add/faq-add.component';
 import { FaqEditComponent } from './components/faq/faq-edit/faq-edit.component';
 import { FaqListComponent } from './components/faq/faq-list/faq-list.component';
+import { ProductBrandAddComponent } from './components/product-brand/product-brand-add/product-brand-add.component';
+import { ProductBrandEditComponent } from './components/product-brand/product-brand-edit/product-brand-edit.component';
+import { ProductBrandListComponent } from './components/product-brand/product-brand-list/product-brand-list.component';
 import { ProductCategoryAddComponent } from './components/product-category/product-category-add/product-category-add.component';
 import { ProductCategoryEditComponent } from './components/product-category/product-category-edit/product-category-edit.component';
 import { ProductCategoryListComponent } from './components/product-category/product-category-list/product-category-list.component';
@@ -158,6 +161,27 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: ProductCategoryEditComponent
+          }
+        ]
+      },
+      {
+        path: 'product-brand',
+        children: [
+          {
+            path: '',
+            component: ProductBrandListComponent
+          },
+          {
+            path: 'list',
+            component: ProductBrandListComponent
+          },
+          {
+            path: 'add',
+            component: ProductBrandAddComponent
+          },
+          {
+            path: 'edit/:id',
+            component: ProductBrandEditComponent
           }
         ]
       },
