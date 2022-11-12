@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class FaqService {
-  private url = 'faq/';
+  private url = 'admin/faq/';
 
   constructor(
     private httpService: HttpService

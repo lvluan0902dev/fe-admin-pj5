@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TestimonialService {
-  private url = 'testimonial/';
+  private url = 'admin/testimonial/';
 
   constructor(
     private httpService: HttpService

@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProductCategoryService {
-  private url = 'product-category/';
+  private url = 'admin/product-category/';
 
   constructor(
     private httpService: HttpService

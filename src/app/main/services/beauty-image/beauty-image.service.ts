@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BeautyImageService {
-  private url = 'beauty-image/';
+  private url = 'admin/beauty-image/';
 
   constructor(
     private httpService: HttpService

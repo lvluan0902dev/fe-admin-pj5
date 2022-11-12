@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ContactSettingService {
-  private url = 'contact-setting/';
+  private url = 'admin/contact-setting/';
 
   constructor(
     private httpService: HttpService

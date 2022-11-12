@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SliderService {
-  private url = 'slider/';
+  private url = 'admin/slider/';
 
   constructor(
     private httpService: HttpService
