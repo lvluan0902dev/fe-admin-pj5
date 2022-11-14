@@ -41,6 +41,9 @@ import { ProductCategoryEditComponent } from './components/product-category/prod
 import { ProductBrandListComponent } from './components/product-brand/product-brand-list/product-brand-list.component';
 import { ProductBrandAddComponent } from './components/product-brand/product-brand-add/product-brand-add.component';
 import { ProductBrandEditComponent } from './components/product-brand/product-brand-edit/product-brand-edit.component';
+import { StaffListComponent } from './components/staff/staff-list/staff-list.component';
+import { StaffAddComponent } from './components/staff/staff-add/staff-add.component';
+import { StaffEditComponent } from './components/staff/staff-edit/staff-edit.component';
 
 
 @NgModule({
@@ -70,6 +73,9 @@ import { ProductBrandEditComponent } from './components/product-brand/product-br
     ProductBrandListComponent,
     ProductBrandAddComponent,
     ProductBrandEditComponent,
+    StaffListComponent,
+    StaffAddComponent,
+    StaffEditComponent,
   ],
   imports: [
     CommonModule,

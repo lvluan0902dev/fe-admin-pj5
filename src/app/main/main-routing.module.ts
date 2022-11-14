@@ -20,6 +20,9 @@ import { ProductCategoryListComponent } from './components/product-category/prod
 import { SliderAddComponent } from './components/slider/slider-add/slider-add.component';
 import { SliderEditComponent } from './components/slider/slider-edit/slider-edit.component';
 import { SliderListComponent } from './components/slider/slider-list/slider-list.component';
+import { StaffAddComponent } from './components/staff/staff-add/staff-add.component';
+import { StaffEditComponent } from './components/staff/staff-edit/staff-edit.component';
+import { StaffListComponent } from './components/staff/staff-list/staff-list.component';
 import { TestimonialAddComponent } from './components/testimonial/testimonial-add/testimonial-add.component';
 import { TestimonialEditComponent } from './components/testimonial/testimonial-edit/testimonial-edit.component';
 import { TestimonialListComponent } from './components/testimonial/testimonial-list/testimonial-list.component';
@@ -182,6 +185,27 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: ProductBrandEditComponent
+          }
+        ]
+      },
+      {
+        path: 'staff',
+        children: [
+          {
+            path: '',
+            component: StaffListComponent
+          },
+          {
+            path: 'list',
+            component: StaffListComponent
+          },
+          {
+            path: 'add',
+            component: StaffAddComponent
+          },
+          {
+            path: 'edit/:id',
+            component: StaffEditComponent
           }
         ]
       },
