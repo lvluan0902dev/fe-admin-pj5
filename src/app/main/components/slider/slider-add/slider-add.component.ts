@@ -40,7 +40,11 @@ export class SliderAddComponent implements OnInit {
       var formData = new FormData();
       var data = this.form.value as any;
       for (let key of Object.keys(data)) {
-        formData.append(key, data[key])
+        if (data[key] == null || data[key] == '') {
+          formData.append(key, '');
+        } else {
+          formData.append(key, data[key]);
+        }
       }
       if (files?.length) {
         formData.set('image', files[0]);
@@ -66,7 +70,11 @@ export class SliderAddComponent implements OnInit {
       var formData = new FormData();
       var data = this.form.value as any;
       for (let key of Object.keys(data)) {
-        formData.append(key, data[key])
+        if (data[key] == null || data[key] == '') {
+          formData.append(key, '');
+        } else {
+          formData.append(key, data[key]);
+        }
       }
       if (files?.length) {
         formData.set('image', files[0]);
