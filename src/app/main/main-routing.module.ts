@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BeautyImageAddComponent } from './components/beauty-image/beauty-image-add/beauty-image-add.component';
 import { BeautyImageEditComponent } from './components/beauty-image/beauty-image-edit/beauty-image-edit.component';
 import { BeautyImageListComponent } from './components/beauty-image/beauty-image-list/beauty-image-list.component';
+import { MessageComponent } from './components/contact-manage/message/message.component';
+import { NotificationEmailComponent } from './components/contact-manage/notification-email/notification-email.component';
 import { AddressComponent } from './components/contact-setting/address/address.component';
 import { EmailComponent } from './components/contact-setting/email/email.component';
 import { GoogleMapsComponent } from './components/contact-setting/google-maps/google-maps.component';
@@ -209,6 +211,19 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'contact-manage',
+        children: [
+          {
+            path: 'message',
+            component: MessageComponent
+          },
+          {
+            path: 'notification-email',
+            component: NotificationEmailComponent
+          }
+        ]
+      }
     ]
   }
 ];
