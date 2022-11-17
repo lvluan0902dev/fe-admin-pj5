@@ -6,7 +6,6 @@ import { TokenService } from '../token/token.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
   })
 };
 
