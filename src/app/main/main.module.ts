@@ -46,6 +46,9 @@ import { StaffAddComponent } from './components/staff/staff-add/staff-add.compon
 import { StaffEditComponent } from './components/staff/staff-edit/staff-edit.component';
 import { MessageComponent } from './components/contact-manage/message/message.component';
 import { NotificationEmailComponent } from './components/contact-manage/notification-email/notification-email.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { ProductAddComponent } from './components/product/product-add/product-add.component';
+import { ProductEditComponent } from './components/product/product-edit/product-edit.component';
 
 
 @NgModule({
@@ -80,6 +83,9 @@ import { NotificationEmailComponent } from './components/contact-manage/notifica
     StaffEditComponent,
     MessageComponent,
     NotificationEmailComponent,
+    ProductListComponent,
+    ProductAddComponent,
+    ProductEditComponent,
   ],
   imports: [
     CommonModule,

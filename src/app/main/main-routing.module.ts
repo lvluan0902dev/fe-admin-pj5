@@ -19,6 +19,9 @@ import { ProductBrandListComponent } from './components/product-brand/product-br
 import { ProductCategoryAddComponent } from './components/product-category/product-category-add/product-category-add.component';
 import { ProductCategoryEditComponent } from './components/product-category/product-category-edit/product-category-edit.component';
 import { ProductCategoryListComponent } from './components/product-category/product-category-list/product-category-list.component';
+import { ProductAddComponent } from './components/product/product-add/product-add.component';
+import { ProductEditComponent } from './components/product/product-edit/product-edit.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { SliderAddComponent } from './components/slider/slider-add/slider-add.component';
 import { SliderEditComponent } from './components/slider/slider-edit/slider-edit.component';
 import { SliderListComponent } from './components/slider/slider-list/slider-list.component';
@@ -223,7 +226,28 @@ const routes: Routes = [
             component: NotificationEmailComponent
           }
         ]
-      }
+      },
+      {
+        path: 'product',
+        children: [
+          {
+            path: '',
+            component: ProductListComponent
+          },
+          {
+            path: 'list',
+            component: ProductListComponent
+          },
+          {
+            path: 'add',
+            component: ProductAddComponent
+          },
+          {
+            path: 'edit/:id',
+            component: ProductEditComponent
+          }
+        ]
+      },
     ]
   }
 ];

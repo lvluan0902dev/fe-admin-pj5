@@ -1,3 +1,6 @@
+import { ProductBrand } from "../product-brand/product-brand.model";
+import { ProductCategory } from "../product-category/product-category.model";
+
 export interface Product {
     id: number,
     product_category_id: number,
@@ -13,5 +16,7 @@ export interface Product {
     order_count: number,
     status: number,
     created_at: string,
-    updated_at: string
+    updated_at: string,
+    product_category: ProductCategory,
+    product_brand: ProductBrand
 }
