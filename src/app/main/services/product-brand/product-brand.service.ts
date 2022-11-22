@@ -49,4 +49,8 @@ export class ProductBrandService {
   public delete(id: any) {
     return this.httpService.delete(this.url + 'delete/' + id, httpOptions);
   }
+
+  public getAll() {
+    return this.httpService.get(this.url + 'get-all', httpOptions);
+  }
 }

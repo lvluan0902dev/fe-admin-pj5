@@ -49,6 +49,7 @@ import { NotificationEmailComponent } from './components/contact-manage/notifica
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { ProductAddComponent } from './components/product/product-add/product-add.component';
 import { ProductEditComponent } from './components/product/product-edit/product-edit.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import { ProductEditComponent } from './components/product/product-edit/product-
     MessageModule,
     ImageModule,
     ConfirmDialogModule,
-    InputTextareaModule
+    InputTextareaModule,
+    DropdownModule
   ],
   providers: [
     { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
