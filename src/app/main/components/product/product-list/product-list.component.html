@@ -71,7 +71,7 @@
                         <td>{{data.created_at|date:'longDate'}}</td>
                         <td>{{data.status == 1 ? 'Bật' : 'Tắt'}}</td>
                         <td>
-                            <a [routerLink]="['/slider/edit', data.id]">
+                            <a [routerLink]="['/product/edit', data.id]">
                                 <button pButton icon="pi pi-pencil"
                                     class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
                             </a>
