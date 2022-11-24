@@ -17,7 +17,7 @@ import { ProductService } from 'src/app/main/services/product/product.service';
 export class ProductAddComponent implements OnInit {
   public productCategories: ProductCategory[] = [];
   public productBrands: ProductBrand[] = [];
-  
+
   public form = this.fb.group({
     product_category: ['', [Validators.required]],
     product_brand: ['', [Validators.required]],
@@ -66,13 +66,19 @@ export class ProductAddComponent implements OnInit {
   }
 
   public save(files: FileList | null) {
-    console.log(this.form);
-    
     this.submitted = true;
     if (this.form.status == 'VALID') {
       var formData = new FormData();
       var data = this.form.value as any;
       for (let key of Object.keys(data)) {
+        if (key == 'product_category') {
+          formData.append('product_category_id', data[key]['id']);
+          continue;
+        } else if (key == 'product_brand') {
+          formData.append('product_brand_id', data[key]['id']);
+          continue;
+        }
+
         if (data[key] == null || data[key] == '') {
           formData.append(key, '');
         } else {
@@ -103,6 +109,14 @@ export class ProductAddComponent implements OnInit {
       var formData = new FormData();
       var data = this.form.value as any;
       for (let key of Object.keys(data)) {
+        if (key == 'product_category') {
+          formData.append('product_category_id', data[key]['id']);
+          continue;
+        } else if (key == 'product_brand') {
+          formData.append('product_brand_id', data[key]['id']);
+          continue;
+        }
+
         if (data[key] == null || data[key] == '') {
           formData.append(key, '');
         } else {

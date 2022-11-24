@@ -53,10 +53,20 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-data>
                     <tr>
-                        <td>{{data.title}}</td>
+                        <td>{{data.name}}</td>
                         <td>
                             <p-image *ngIf="data.image_path" [src]="url + data.image_path" [alt]="data.image_name"
-                                [preview]="true" width="250"></p-image>
+                                [preview]="true" width="100"></p-image>
+                        </td>
+                        <td>
+                            <span *ngIf="data.product_category">
+                                {{data.product_category.name}}
+                            </span>
+                        </td>
+                        <td>
+                            <span *ngIf="data.product_brand">
+                                {{data.product_brand.name}}
+                            </span>
                         </td>
                         <td>{{data.created_at|date:'longDate'}}</td>
                         <td>{{data.status == 1 ? 'Bật' : 'Tắt'}}</td>
