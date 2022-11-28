@@ -71,7 +71,7 @@
                         <td>{{data.created_at|date:'longDate'}}</td>
                         <td>{{data.status == 1 ? 'Bật' : 'Tắt'}}</td>
                         <td>
-                            <a (click)="showProductImageDialog()">
+                            <a (click)="showProductImageDialog(data.id)">
                                 <button pButton icon="pi pi-images"
                                     class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
                             </a>
@@ -104,7 +104,7 @@
 <!-- Product Image Diaglog -->
 <p-dialog header="Hình ảnh sản phẩm" [(visible)]="productImageDialog" [modal]="true"
     [style]="{width: '75vw', height: '100vh'}" [draggable]="false" [resizable]="false">
-    <p-fileUpload accept="image/*" name="image" [url]="apiUrl + 'admin/product/upload-product-image/1'">
+    <p-fileUpload accept="image/*" name="image" [url]="apiUrl + 'admin/product/upload-product-image/' + product_id">
     </p-fileUpload>
     <ng-template pTemplate="footer">
         <button pButton pRipple type="button" label="Primary" class="p-button-outlined p-button-sm" icon="pi pi-check"

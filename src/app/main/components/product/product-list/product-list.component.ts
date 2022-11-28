@@ -22,6 +22,7 @@ export class ProductListComponent implements OnInit {
   public search_input: string = '';
 
   public productImageDialog: boolean = false;
+  public product_id = 0;
 
   constructor(
     private productService: ProductService,
@@ -89,7 +90,8 @@ export class ProductListComponent implements OnInit {
   }
 
   // Product Image
-  public showProductImageDialog() {
+  public showProductImageDialog(product_id: number) {
+    this.product_id = product_id;
     this.productImageDialog = true;
   }
 }
