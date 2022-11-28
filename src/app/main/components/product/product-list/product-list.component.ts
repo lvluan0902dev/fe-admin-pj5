@@ -13,12 +13,15 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductListComponent implements OnInit {
   public url = environment.url + '/';
+  public apiUrl = environment.apiUrl + '/';
   public datas: Product[] = [];
   public totalResult: number = 0;
   public total: number = 0;
   public loading: boolean = true;
   public event: any;
   public search_input: string = '';
+
+  public productImageDialog: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -83,5 +86,10 @@ export class ProductListComponent implements OnInit {
 
   private setLoadingStatus(status: boolean) {
     this.loading = status;
+  }
+
+  // Product Image
+  public showProductImageDialog() {
+    this.productImageDialog = true;
   }
 }

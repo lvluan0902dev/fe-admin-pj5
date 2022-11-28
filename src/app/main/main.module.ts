@@ -50,7 +50,9 @@ import { ProductListComponent } from './components/product/product-list/product-
 import { ProductAddComponent } from './components/product/product-add/product-add.component';
 import { ProductEditComponent } from './components/product/product-edit/product-edit.component';
 import { DropdownModule } from 'primeng/dropdown';
-
+import { DialogModule } from 'primeng/dialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -104,7 +106,10 @@ import { DropdownModule } from 'primeng/dropdown';
     ImageModule,
     ConfirmDialogModule,
     InputTextareaModule,
-    DropdownModule
+    DropdownModule,
+    DialogModule,
+    FileUploadModule,
+    HttpClientModule
   ],
   providers: [
     { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
