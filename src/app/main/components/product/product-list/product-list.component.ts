@@ -21,8 +21,14 @@ export class ProductListComponent implements OnInit {
   public event: any;
   public search_input: string = '';
 
+  // Product Image
   public productImageDialog: boolean = false;
-  public product_id = 0;
+  public productId = 0;
+  public productImageDatas: Product[] = [];
+  public productImageTotalResult: number = 0;
+  public productImageTotal: number = 0;
+  public productImageLoading: boolean = true;
+  public productImageEvent: any;
 
   constructor(
     private productService: ProductService,
@@ -90,8 +96,66 @@ export class ProductListComponent implements OnInit {
   }
 
   // Product Image
-  public showProductImageDialog(product_id: number) {
-    this.product_id = product_id;
+  public showProductImageDialog(productId: number) {
+    this.productId = productId;
     this.productImageDialog = true;
+  }
+
+  public productImageLoad(event: LazyLoadEvent) {
+    this.productImageSetLoadingStatus(true);
+    this.productImageEvent = event;
+    setTimeout(() => {
+      this.productImageLoadData();
+    }, 1000);
+  }
+
+  private productImageSetLoadingStatus(status: boolean) {
+    this.productImageLoading = status;
+  }
+
+  private productImageLoadData() {
+    this.productService.productImageList(this.productImageEvent, this.productId).subscribe((response) => {
+      this.productImageDatas = response.data;
+      this.productImageTotalResult = response.total_result;
+      this.productImageTotal = response.total;
+      this.productImageSetLoadingStatus(false);
+    });
+  }
+
+  /**
+   * 
+   * @param id - image id
+   */
+  public productImagedelete(id: number) {
+    this.confirmationService.confirm({
+      message: 'Bạn có muốn xoá?',
+      header: 'Xoá',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.productService.productImageDelete(id).subscribe((response) => {
+          if (response.success == 1) {
+            this.toastService.success('Thành công', response.message);
+            this.productImageSetLoadingStatus(true);
+            this.productImageLoadData();
+          } else {
+            this.toastService.error('Lỗi', response.message);
+          }
+        });
+      },
+      reject: () => {
+
+      },
+      key: "topDialog"
+    });
+  }
+
+  public productImageOnUpload(event: any) {
+    if (event.originalEvent.body.success == 1) {
+      this.toastService.success('Thành công', event.originalEvent.body.message);
+      this.productImageSetLoadingStatus(true);
+      this.productImageLoadData();
+    } else {
+      this.toastService.error('Lỗi', event.originalEvent.body.message);
+    }
   }
 }
