@@ -24,7 +24,7 @@ export class ProductEditComponent implements OnInit {
     product_category: ['', [Validators.required]],
     product_brand: ['', [Validators.required]],
     name: ['', [Validators.required]],
-    image: ['', [Validators.required]],
+    image: ['', []],
     short_description: ['', []],
     product_detail: ['', []],
     how_to_use: ['', []],
@@ -93,7 +93,7 @@ export class ProductEditComponent implements OnInit {
       product_category: [data.product_category, [Validators.required]],
       product_brand: [data.product_brand, [Validators.required]],
       name: [data.name, [Validators.required]],
-      image: ['', [Validators.required]],
+      image: ['', []],
       short_description: [data.short_description, []],
       product_detail: [data.product_detail, []],
       how_to_use: [data.how_to_use, []],
@@ -117,6 +117,14 @@ export class ProductEditComponent implements OnInit {
 
       var data = this.form.value as any;
       for (let key of Object.keys(data)) {
+        if (key == 'product_category') {
+          formData.append('product_category_id', data[key]['id']);
+          continue;
+        } else if (key == 'product_brand') {
+          formData.append('product_brand_id', data[key]['id']);
+          continue;
+        }
+
         if (data[key] == null || data[key] == '') {
           formData.append(key, '');
         } else {
@@ -152,6 +160,14 @@ export class ProductEditComponent implements OnInit {
 
       var data = this.form.value as any;
       for (let key of Object.keys(data)) {
+        if (key == 'product_category') {
+          formData.append('product_category_id', data[key]['id']);
+          continue;
+        } else if (key == 'product_brand') {
+          formData.append('product_brand_id', data[key]['id']);
+          continue;
+        }
+
         if (data[key] == null || data[key] == '') {
           formData.append(key, '');
         } else {
@@ -167,7 +183,7 @@ export class ProductEditComponent implements OnInit {
       this.productService.edit(formData).subscribe((response) => {
         if (response.success == 1) {
           this.toastService.success('Thành công', response.message);
-          this.router.navigateByUrl('/slider/list');
+          this.router.navigateByUrl('/product/list');
         } else {
           this.toastService.error('Lỗi', response.message);
         }
