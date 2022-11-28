@@ -54,7 +54,7 @@ export class StaffEditComponent implements OnInit {
         this.setImage(this.staff.image_name, this.staff.image_path);
         this.setForm(this.staff);
       } else {
-        this.toastService.error('Error', response.message);
+        this.toastService.error('Lỗi', response.message);
       }
     });
   }

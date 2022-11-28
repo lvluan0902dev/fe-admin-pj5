@@ -50,7 +50,7 @@ export class TestimonialEditComponent implements OnInit {
         this.setImage(this.testimonial.image_name, this.testimonial.image_path);
         this.setForm(this.testimonial);
       } else {
-        this.toastService.error('Error', response.message);
+        this.toastService.error('Lỗi', response.message);
       }
     });
   }

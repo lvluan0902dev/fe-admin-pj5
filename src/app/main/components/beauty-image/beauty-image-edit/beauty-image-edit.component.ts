@@ -48,7 +48,7 @@ export class BeautyImageEditComponent implements OnInit {
         this.setImage(this.beautyImage.image_name, this.beautyImage.image_path);
         this.setForm(this.beautyImage);
       } else {
-        this.toastService.error('Error', response.message);
+        this.toastService.error('Lỗi', response.message);
       }
     });
   }

@@ -51,7 +51,7 @@ export class SliderEditComponent implements OnInit {
         this.setImage(this.slider.image_name, this.slider.image_path);
         this.setForm(this.slider);
       } else {
-        this.toastService.error('Error', response.message);
+        this.toastService.error('Lỗi', response.message);
       }
     });
   }

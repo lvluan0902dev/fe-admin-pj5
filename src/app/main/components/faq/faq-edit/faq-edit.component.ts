@@ -48,7 +48,7 @@ export class FaqEditComponent implements OnInit {
         this.faq = response.data;
         this.setForm(this.faq);
       } else {
-        this.toastService.error('Error', response.message);
+        this.toastService.error('Lỗi', response.message);
       }
     });
   }

@@ -47,7 +47,7 @@ export class ProductCategoryEditComponent implements OnInit {
         this.productCategory = response.data;
         this.setForm(this.productCategory);
       } else {
-        this.toastService.error('Error', response.message);
+        this.toastService.error('Lỗi', response.message);
       }
     });
   }

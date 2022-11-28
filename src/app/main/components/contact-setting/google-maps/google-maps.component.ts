@@ -47,7 +47,7 @@ export class GoogleMapsComponent implements OnInit {
         this.contactSetting = response.data;
         this.setForm(this.contactSetting);
       } else {
-        this.toastService.error('Error', response.message);
+        this.toastService.error('Lỗi', response.message);
       }
     });
   }

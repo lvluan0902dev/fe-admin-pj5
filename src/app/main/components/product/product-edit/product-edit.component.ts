@@ -83,7 +83,7 @@ export class ProductEditComponent implements OnInit {
         this.setImage(this.product.image_name, this.product.image_path);
         this.setForm(this.product);
       } else {
-        this.toastService.error('Error', response.message);
+        this.toastService.error('Lỗi', response.message);
       }
     });
   }

@@ -47,7 +47,7 @@ export class ProductBrandEditComponent implements OnInit {
         this.productBrand = response.data;
         this.setForm(this.productBrand);
       } else {
-        this.toastService.error('Error', response.message);
+        this.toastService.error('Lỗi', response.message);
       }
     });
   }
