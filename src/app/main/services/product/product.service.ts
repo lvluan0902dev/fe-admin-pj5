@@ -121,4 +121,24 @@ export class ProductService {
     let payload = data;
     return this.httpService.post(this.url + 'product-option-add/' + id, payload, httpOptions);
   }
+
+  /**
+   * 
+   * @param data 
+   * @param id - product option id
+   * @returns 
+   */
+  public productOptionEdit(data: any) {
+    let payload = data;
+    return this.httpService.post(this.url + 'product-option-edit', payload, httpOptions);
+  }
+
+  /**
+   * 
+   * @param id - product option id
+   * @returns 
+   */
+  public productOptionGet(id: any) {
+    return this.httpService.get(this.url + 'product-option-get/' + id, httpOptions);
+  }
 }

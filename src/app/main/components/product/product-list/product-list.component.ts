@@ -47,6 +47,7 @@ export class ProductListComponent implements OnInit {
     stock: ['', [Validators.required]],
   });
   public productOptionSubmitted: boolean = false;
+  public productOptionId: number = 0;
 
   constructor(
     private productService: ProductService,
@@ -87,7 +88,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  public delete(id: number) {
+  public delete(id: any) {
     this.confirmationService.confirm({
       message: 'Bạn có muốn xoá?',
       header: 'Xoá',
@@ -115,7 +116,7 @@ export class ProductListComponent implements OnInit {
   }
 
   // Product Image
-  public showProductImageDialog(productId: number) {
+  public showProductImageDialog(productId: any) {
     this.productId = productId;
     this.productImageDialog = true;
   }
@@ -145,7 +146,7 @@ export class ProductListComponent implements OnInit {
    * 
    * @param id - image id
    */
-  public productImagedelete(id: number) {
+  public productImagedelete(id: any) {
     this.confirmationService.confirm({
       message: 'Bạn có muốn xoá?',
       header: 'Xoá',
@@ -179,7 +180,7 @@ export class ProductListComponent implements OnInit {
   }
 
   // Product Option
-  public showProductOptionDialog(productId: number) {
+  public showProductOptionDialog(productId: any) {
     this.productId = productId;
     this.productOptionDialog = true;
   }
@@ -209,7 +210,7 @@ export class ProductListComponent implements OnInit {
    * 
    * @param id - option id
    */
-  public productOptiondelete(id: number) {
+  public productOptiondelete(id: any) {
     this.confirmationService.confirm({
       message: 'Bạn có muốn xoá?',
       header: 'Xoá',
@@ -248,19 +249,60 @@ export class ProductListComponent implements OnInit {
         formData.set('image', files[0]);
       }
 
-      this.productService.productOptionAdd(formData, this.productId).subscribe((response) => {
-        if (response.success == 1) {
-          this.toastService.success('Thành công', response.message);
-          this.productOptionSubmitted = false;
-          this.productOptionForm.reset();
-          this.productOptionSetLoadingStatus(true);
-          this.productOptionLoadData();
-        } else {
-          this.toastService.error('Lỗi', response.message);
-        }
-      });
+      if (this.productOptionId != 0) {
+        // Set PUT method
+        formData.append('_method', 'PUT');
+        formData.append('id', String(this.productOptionId));
+        this.productService.productOptionEdit(formData).subscribe((response) => {
+          if (response.success == 1) {
+            this.toastService.success('Thành công', response.message);
+            this.productOptionSubmitted = false;
+            this.productOptionForm.reset();
+            this.productOptionSetLoadingStatus(true);
+            this.productOptionLoadData();
+            this.productOptionId = 0;
+          } else {
+            this.toastService.error('Lỗi', response.message);
+          }
+        });
+      } else {
+        this.productService.productOptionAdd(formData, this.productId).subscribe((response) => {
+          if (response.success == 1) {
+            this.toastService.success('Thành công', response.message);
+            this.productOptionSubmitted = false;
+            this.productOptionForm.reset();
+            this.productOptionSetLoadingStatus(true);
+            this.productOptionLoadData();
+          } else {
+            this.toastService.error('Lỗi', response.message);
+          }
+        });
+      }
     } else {
       // Do something
     }
+  }
+
+  /**
+   * 
+   * @param id - product option id
+   */
+  public productOptionEdit(id: any) {
+    this.productOptionId = id;
+    this.productService.productOptionGet(this.productOptionId).subscribe((response) => {
+      if (response.success == 1) {
+        this.productOptionSetForm(response.data);
+      } else {
+        this.toastService.error('Lỗi', response.message);
+      }
+    });
+  }
+
+  private productOptionSetForm(data: any) {
+    this.productOptionForm = this.fb.group({
+      name: [data.name, [Validators.required]],
+      price: [data.price, [Validators.required]],
+      stock: [data.stock, [Validators.required]],
+    });
   }
 }

@@ -108,45 +108,45 @@
 <!-- Product Image Diaglog -->
 <p-dialog header="Hình ảnh sản phẩm" [(visible)]="productImageDialog" [modal]="true"
     [style]="{width: '75vw', height: '100vh'}" [draggable]="false" [resizable]="true" [maximizable]="true">
-    <p-fileUpload accept="image/*" name="image" [url]="apiUrl + 'admin/product/upload-product-image/' + productId" (onUpload)="productImageOnUpload($event)">
+    <p-fileUpload accept="image/*" name="image" [url]="apiUrl + 'admin/product/upload-product-image/' + productId"
+        (onUpload)="productImageOnUpload($event)">
     </p-fileUpload>
     <ng-template pTemplate="content">
-        <p-table [value]="productImageDatas" [lazy]="true" (onLazyLoad)="productImageLoad($event)" [totalRecords]="productImageTotalResult"
-                [loading]="productImageLoading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
-                [rowsPerPageOptions]="[10,25,50]">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>Hình ảnh</th>
-                        <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
-                        </th>
-                        <th>#</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-productImageData>
-                    <tr>
-                        <td>
-                            <p-image *ngIf="productImageData.image_path" [src]="url + productImageData.image_path" [alt]="productImageData.image_name"
-                                [preview]="true" width="100"></p-image>
-                        </td>
-                        <td>{{productImageData.created_at|date:'longDate'}}</td>
-                        <td>
-                            <button pButton icon="pi pi-trash"
-                                class="p-button-rounded p-button-sm p-button-warning mb-2"
-                                (click)="productImagedelete(productImageData.id)"></button>
-                        </td>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="summary">
-                    <div class="p-d-flex p-ai-center p-jc-between">
-                        <div *ngIf="productImageTotalResult == productImageTotal">
-                            Có tổng số {{productImageTotalResult}}
-                        </div>
-                        <div *ngIf="productImageTotalResult != productImageTotal">
-                            Có {{productImageTotalResult}} trên tổng số {{productImageTotal}}
-                        </div>
+        <p-table [value]="productImageDatas" [lazy]="true" (onLazyLoad)="productImageLoad($event)"
+            [totalRecords]="productImageTotalResult" [loading]="productImageLoading" dataKey="id"
+            responsiveLayout="scroll" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10,25,50]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
+                    </th>
+                    <th>#</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-productImageData>
+                <tr>
+                    <td>
+                        <p-image *ngIf="productImageData.image_path" [src]="url + productImageData.image_path"
+                            [alt]="productImageData.image_name" [preview]="true" width="100"></p-image>
+                    </td>
+                    <td>{{productImageData.created_at|date:'longDate'}}</td>
+                    <td>
+                        <button pButton icon="pi pi-trash" class="p-button-rounded p-button-sm p-button-warning mb-2"
+                            (click)="productImagedelete(productImageData.id)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    <div *ngIf="productImageTotalResult == productImageTotal">
+                        Có tổng số {{productImageTotalResult}}
                     </div>
-                </ng-template>
-            </p-table>
+                    <div *ngIf="productImageTotalResult != productImageTotal">
+                        Có {{productImageTotalResult}} trên tổng số {{productImageTotal}}
+                    </div>
+                </div>
+            </ng-template>
+        </p-table>
     </ng-template>
     <ng-template pTemplate="footer">
         <button pButton pRipple type="button" label="Primary" class="p-button-outlined p-button-sm" icon="pi pi-check"
@@ -207,53 +207,58 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button pButton label="Lưu" class="p-button-primary p-button-sm mr-2" (click)="productOptionSave(null)"></button>
+                    <button pButton label="Lưu" class="p-button-primary p-button-sm mr-2"
+                        (click)="productOptionSave(null)"></button>
                 </div>
             </div>
         </form>
-        <p-table [value]="productOptionDatas" [lazy]="true" (onLazyLoad)="productOptionLoad($event)" [totalRecords]="productOptionTotalResult"
-                [loading]="productOptionLoading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
-                [rowsPerPageOptions]="[10,25,50]">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>Tên</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
-                        </th>
-                        <th>#</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-productOptionData>
-                    <tr>
-                        <td>
-                            {{productOptionData.name}}
-                        </td>
-                        <td>
-                            {{productOptionData.price}}
-                        </td>
-                        <td>
-                            {{productOptionData.stock}}
-                        </td>
-                        <td>{{productOptionData.created_at|date:'longDate'}}</td>
-                        <td>
-                            <button pButton icon="pi pi-trash"
-                                class="p-button-rounded p-button-sm p-button-warning mb-2"
-                                (click)="productOptiondelete(productOptionData.id)"></button>
-                        </td>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="summary">
-                    <div class="p-d-flex p-ai-center p-jc-between">
-                        <div *ngIf="productOptionTotalResult == productOptionTotal">
-                            Có tổng số {{productOptionTotalResult}}
-                        </div>
-                        <div *ngIf="productOptionTotalResult != productOptionTotal">
-                            Có {{productOptionTotalResult}} trên tổng số {{productOptionTotal}}
-                        </div>
+        <p-table [value]="productOptionDatas" [lazy]="true" (onLazyLoad)="productOptionLoad($event)"
+            [totalRecords]="productOptionTotalResult" [loading]="productOptionLoading" dataKey="id"
+            responsiveLayout="scroll" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10,25,50]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Tên <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="price">Giá <p-sortIcon field="stock"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="stock">Số lượng <p-sortIcon field="stock"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
+                    </th>
+                    <th>#</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-productOptionData>
+                <tr>
+                    <td>
+                        {{productOptionData.name}}
+                    </td>
+                    <td>
+                        {{productOptionData.price}}
+                    </td>
+                    <td>
+                        {{productOptionData.stock}}
+                    </td>
+                    <td>{{productOptionData.created_at|date:'longDate'}}</td>
+                    <td>
+                        <button (click)="productOptionEdit(productOptionData.id)" pButton icon="pi pi-pencil"
+                            class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
+                        <button pButton icon="pi pi-trash" class="p-button-rounded p-button-sm p-button-warning mb-2"
+                            (click)="productOptiondelete(productOptionData.id)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    <div *ngIf="productOptionTotalResult == productOptionTotal">
+                        Có tổng số {{productOptionTotalResult}}
                     </div>
-                </ng-template>
-            </p-table>
+                    <div *ngIf="productOptionTotalResult != productOptionTotal">
+                        Có {{productOptionTotalResult}} trên tổng số {{productOptionTotal}}
+                    </div>
+                </div>
+            </ng-template>
+        </p-table>
     </ng-template>
     <ng-template pTemplate="footer">
         <button pButton pRipple type="button" label="Primary" class="p-button-outlined p-button-sm" icon="pi pi-check"
