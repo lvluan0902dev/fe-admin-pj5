@@ -79,4 +79,46 @@ export class ProductService {
   public productImageDelete(id: any) {
     return this.httpService.delete(this.url + 'product-image-delete/' + id, httpOptions);
   }
+
+  /**
+   * 
+   * @param data 
+   * @param id - product id
+   * @returns 
+   */
+  public productOptionList(data: any, id: any) {
+    if (data.sortField == undefined || data.sortField == '') {
+      data.sortOrder = 0;
+    }
+
+    let payload = {
+      first_row: data.first,
+      per_page: data.rows == undefined ? 0 : data.rows,
+      sort_field: data.sortField == undefined ? '' : data.sortField,
+      sort_type: data.sortOrder == 1 ? 'ASC' : 'DESC',
+      search: data.searchInput
+    };
+    return this.httpService.post(this.url + 'product-option-list/' + id, payload, httpOptions);
+  }
+
+  /**
+ * 
+ * @param id - option id
+ * @returns 
+ */
+  public productOptionDelete(id: any) {
+    return this.httpService.delete(this.url + 'product-option-delete/' + id, httpOptions);
+  }
+
+
+  /**
+   * 
+   * @param data 
+   * @param id - product id
+   * @returns 
+   */
+  public productOptionAdd(data: any, id: any) {
+    let payload = data;
+    return this.httpService.post(this.url + 'product-option-add/' + id, payload, httpOptions);
+  }
 }

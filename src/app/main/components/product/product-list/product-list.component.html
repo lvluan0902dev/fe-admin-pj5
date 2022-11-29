@@ -75,6 +75,10 @@
                                 <button pButton icon="pi pi-images"
                                     class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
                             </a>
+                            <a (click)="showProductOptionDialog(data.id)">
+                                <button pButton icon="pi pi-bars"
+                                    class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
+                            </a>
                             <a [routerLink]="['/product/edit', data.id]">
                                 <button pButton icon="pi pi-pencil"
                                     class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
@@ -147,5 +151,112 @@
     <ng-template pTemplate="footer">
         <button pButton pRipple type="button" label="Primary" class="p-button-outlined p-button-sm" icon="pi pi-check"
             (click)="productImageDialog=false" label="Đóng" styleClass="p-button-text"></button>
+    </ng-template>
+</p-dialog>
+
+<!-- Product Option Diaglog -->
+<p-dialog header="Thuộc tính sản phẩm" [(visible)]="productOptionDialog" [modal]="true"
+    [style]="{width: '75vw', height: '100vh'}" [draggable]="false" [resizable]="true" [maximizable]="true">
+    <ng-template pTemplate="content">
+        <form [formGroup]="productOptionForm" class="mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tên <span class="required-color">*</span></label>
+                        <div>
+                            <input type="text" class="p-inputtext-sm with-100percent" pInputText
+                                formControlName="name" />
+                        </div>
+                        <div *ngIf="productOptionForm.controls.name.invalid && productOptionSubmitted">
+                            <div *ngIf="productOptionForm.controls.name.errors?.['required']">
+                                <small class="p-error">Tên là bắt buộc</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Giá <span class="required-color">*</span></label>
+                        <div>
+                            <input type="number" class="p-inputtext-sm with-100percent" pInputText
+                                formControlName="price" />
+                        </div>
+                        <div *ngIf="productOptionForm.controls.price.invalid && productOptionSubmitted">
+                            <div *ngIf="productOptionForm.controls.price.errors?.['required']">
+                                <small class="p-error">Giá là bắt buộc</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Số lượng <span class="required-color">*</span></label>
+                        <div>
+                            <input type="number" class="p-inputtext-sm with-100percent" pInputText
+                                formControlName="stock" />
+                        </div>
+                        <div *ngIf="productOptionForm.controls.stock.invalid && productOptionSubmitted">
+                            <div *ngIf="productOptionForm.controls.stock.errors?.['required']">
+                                <small class="p-error">Số lượng là bắt buộc</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button pButton label="Lưu" class="p-button-primary p-button-sm mr-2" (click)="productOptionSave(null)"></button>
+                </div>
+            </div>
+        </form>
+        <p-table [value]="productOptionDatas" [lazy]="true" (onLazyLoad)="productOptionLoad($event)" [totalRecords]="productOptionTotalResult"
+                [loading]="productOptionLoading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Tên</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
+                        </th>
+                        <th>#</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-productOptionData>
+                    <tr>
+                        <td>
+                            {{productOptionData.name}}
+                        </td>
+                        <td>
+                            {{productOptionData.price}}
+                        </td>
+                        <td>
+                            {{productOptionData.stock}}
+                        </td>
+                        <td>{{productOptionData.created_at|date:'longDate'}}</td>
+                        <td>
+                            <button pButton icon="pi pi-trash"
+                                class="p-button-rounded p-button-sm p-button-warning mb-2"
+                                (click)="productOptiondelete(productOptionData.id)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <div *ngIf="productOptionTotalResult == productOptionTotal">
+                            Có tổng số {{productOptionTotalResult}}
+                        </div>
+                        <div *ngIf="productOptionTotalResult != productOptionTotal">
+                            Có {{productOptionTotalResult}} trên tổng số {{productOptionTotal}}
+                        </div>
+                    </div>
+                </ng-template>
+            </p-table>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple type="button" label="Primary" class="p-button-outlined p-button-sm" icon="pi pi-check"
+            (click)="productOptionDialog=false" label="Đóng" styleClass="p-button-text"></button>
     </ng-template>
 </p-dialog>
