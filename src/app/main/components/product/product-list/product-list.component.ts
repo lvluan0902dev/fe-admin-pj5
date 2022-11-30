@@ -9,6 +9,8 @@ import { Product } from 'src/app/main/models/product/product.model';
 import { ProductService } from 'src/app/main/services/product/product.service';
 import { environment } from 'src/environments/environment';
 
+declare var productSlideInit: any;
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -23,6 +25,9 @@ export class ProductListComponent implements OnInit {
   public loading: boolean = true;
   public event: any;
   public search_input: string = '';
+
+  public productDetailsDialog: boolean = false;
+  public product!: Product;
 
   public productId = 0;
 
@@ -113,6 +118,22 @@ export class ProductListComponent implements OnInit {
 
   private setLoadingStatus(status: boolean) {
     this.loading = status;
+  }
+
+  public showProductDetailsDialog(id: any) {
+    this.getProductDetails(id);
+    this.productDetailsDialog = true;
+  }
+
+  private getProductDetails(id: any) {
+    this.productService.get(id).subscribe((response) => {
+      if (response.success == 1) {
+        this.product = response.data;
+        productSlideInit();
+      } else {
+        this.toastService.error('Lỗi', response.message);
+      }
+    });
   }
 
   // Product Image
