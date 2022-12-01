@@ -232,10 +232,10 @@
                         {{productOptionData.name}}
                     </td>
                     <td>
-                        {{productOptionData.price}}
+                        {{productOptionData.price | number}}
                     </td>
                     <td>
-                        {{productOptionData.stock}}
+                        {{productOptionData.stock | number}}
                     </td>
                     <td>{{productOptionData.created_at|date:'longDate'}}</td>
                     <td>
@@ -292,14 +292,6 @@
                             <hr>
 
                             <h4 class="mt-3">Kích thước <small>(Vui lòng chọn)</small></h4>
-                            <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-default text-center" *ngFor="let productOption of product.product_options">
-                                    <input type="radio" name="color_option" autocomplete="off">
-                                    <span class="text-center">{{productOption.name}}</span>
-                                    <br>
-                                    {{productOption.price}} đ
-                                </label>
-                            </div> -->
                             <div class="form-check" *ngFor="let productOption of product.product_options">
                                 <input type="radio" name="product_option" class="form-check-input">
                                 <label class="form-check-label">{{productOption.name}} - {{productOption.price}} đ</label>
