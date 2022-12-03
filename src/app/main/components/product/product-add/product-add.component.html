@@ -59,6 +59,50 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tên option <span class="required-color">*</span></label>
+                        <div>
+                            <input type="text" class="p-inputtext-sm with-100percent" pInputText
+                                formControlName="option_name" />
+                        </div>
+                        <div *ngIf="form.controls.option_name.invalid && submitted">
+                            <div *ngIf="form.controls.option_name.errors?.['required']">
+                                <small class="p-error">Tên option là bắt buộc</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Giá <span class="required-color">*</span></label>
+                        <div>
+                            <input type="number" class="p-inputtext-sm with-100percent" pInputText
+                                formControlName="option_price" />
+                        </div>
+                        <div *ngIf="form.controls.option_price.invalid && submitted">
+                            <div *ngIf="form.controls.option_price.errors?.['required']">
+                                <small class="p-error">Giá là bắt buộc</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Số lượng <span class="required-color">*</span></label>
+                        <div>
+                            <input type="text" class="p-inputtext-sm with-100percent" pInputText
+                                formControlName="option_stock" />
+                        </div>
+                        <div *ngIf="form.controls.option_stock.invalid && submitted">
+                            <div *ngIf="form.controls.option_stock.errors?.['required']">
+                                <small class="p-error">Số lượng là bắt buộc</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
