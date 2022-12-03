@@ -41,7 +41,7 @@ export class BeautyImageEditComponent implements OnInit {
     this.get();
   }
 
-  public get() {
+  private get() {
     this.beautyImageService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
         this.beautyImage = response.data;

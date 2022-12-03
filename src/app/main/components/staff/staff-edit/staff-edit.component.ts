@@ -47,7 +47,7 @@ export class StaffEditComponent implements OnInit {
     this.get();
   }
 
-  public get() {
+  private get() {
     this.staffService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
         this.staff = response.data;

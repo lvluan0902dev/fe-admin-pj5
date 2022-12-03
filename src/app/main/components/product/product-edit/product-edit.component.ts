@@ -60,7 +60,7 @@ export class ProductEditComponent implements OnInit {
     this.get();
   }
 
-  public getAllProductCategory() {
+  private getAllProductCategory() {
     this.productCategoryService.getAll().subscribe((response) => {
       if (response.success == 1) {
         this.productCategories = response.data;
@@ -68,7 +68,7 @@ export class ProductEditComponent implements OnInit {
     });
   }
 
-  public getAllProductBrand() {
+  private getAllProductBrand() {
     this.productBrandService.getAll().subscribe((response) => {
       if (response.success == 1) {
         this.productBrands = response.data;
@@ -76,7 +76,7 @@ export class ProductEditComponent implements OnInit {
     });
   }
 
-  public get() {
+  private get() {
     this.productService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
         this.product = response.data;

@@ -41,7 +41,7 @@ export class AddressComponent implements OnInit {
     this.get();
   }
 
-  public get() {
+  private get() {
     this.contactSettingService.get(this.title_obj).subscribe((response) => {
       if (response.success == 1) {
         this.contactSetting = response.data;

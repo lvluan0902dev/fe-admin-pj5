@@ -41,7 +41,7 @@ export class ProductCategoryEditComponent implements OnInit {
     this.get();
   }
 
-  public get() {
+  private get() {
     this.productCategoryService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
         this.productCategory = response.data;

@@ -41,7 +41,7 @@ export class ProductBrandEditComponent implements OnInit {
     this.get();
   }
 
-  public get() {
+  private get() {
     this.productBrandService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
         this.productBrand = response.data;

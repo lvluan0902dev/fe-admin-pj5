@@ -49,7 +49,7 @@ export class ProductAddComponent implements OnInit {
     this.getAllProductBrand();
   }
 
-  public getAllProductCategory() {
+  private getAllProductCategory() {
     this.productCategoryService.getAll().subscribe((response) => {
       if (response.success == 1) {
         this.productCategories = response.data;
@@ -57,7 +57,7 @@ export class ProductAddComponent implements OnInit {
     });
   }
 
-  public getAllProductBrand() {
+  private getAllProductBrand() {
     this.productBrandService.getAll().subscribe((response) => {
       if (response.success == 1) {
         this.productBrands = response.data;

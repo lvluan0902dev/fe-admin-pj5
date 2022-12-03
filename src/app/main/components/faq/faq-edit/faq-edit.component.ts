@@ -42,7 +42,7 @@ export class FaqEditComponent implements OnInit {
     this.get();
   }
 
-  public get() {
+  private get() {
     this.faqService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
         this.faq = response.data;

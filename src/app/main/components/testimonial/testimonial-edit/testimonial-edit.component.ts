@@ -43,7 +43,7 @@ export class TestimonialEditComponent implements OnInit {
     this.get();
   }
 
-  public get() {
+  private get() {
     this.testimonialService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
         this.testimonial = response.data;

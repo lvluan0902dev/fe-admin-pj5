@@ -44,7 +44,7 @@ export class SliderEditComponent implements OnInit {
     this.get();
   }
 
-  public get() {
+  private get() {
     this.sliderService.get(this.id).subscribe((response) => {
       if (response.success == 1) {
         this.slider = response.data;
