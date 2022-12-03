@@ -277,10 +277,12 @@
                         <div class="col-12 col-sm-6">
                             <h3 class="d-inline-block d-sm-none">{{product.name}}</h3>
                             <div class="col-12">
-                                <img [src]="url + product.product_images[0].image_path" class="product-image"
-                                    [alt]="product.product_images[0].image_name" style="width: 450px;">
+                                <img [src]="url + product.image_path" class="product-image"
+                                    [alt]="product.image_name" style="width: 450px;">
                             </div>
                             <div class="col-12 product-image-thumbs">
+                                <div class="product-image-thumb" ><img
+                                    [src]="url + product.image_path" [alt]="product.image_name"></div>
                                 <div class="product-image-thumb" *ngFor="let productImage of product.product_images"><img
                                         [src]="url + productImage.image_path" [alt]="productImage.image_name"></div>
                             </div>
@@ -292,16 +294,14 @@
                             <hr>
 
                             <h4 class="mt-3">Kích thước <small>(Vui lòng chọn)</small></h4>
+                            <div class="form-check">
+                                <input type="radio" name="product_option" class="form-check-input">
+                                <label class="form-check-label">{{product.option_name}} - {{product.option_price | number}} đ</label>
+                            </div>
                             <div class="form-check" *ngFor="let productOption of product.product_options">
                                 <input type="radio" name="product_option" class="form-check-input">
-                                <label class="form-check-label">{{productOption.name}} - {{productOption.price}} đ</label>
+                                <label class="form-check-label">{{productOption.name}} - {{productOption.price | number}} đ</label>
                             </div>
-
-                            <!-- <div class="bg-gray py-2 px-3 mt-4">
-                                <h2 class="mb-0">
-                                    Giá
-                                </h2>
-                            </div> -->
 
                             <div class="mt-4">
                                 <div class="btn btn-primary btn-lg btn-flat">
