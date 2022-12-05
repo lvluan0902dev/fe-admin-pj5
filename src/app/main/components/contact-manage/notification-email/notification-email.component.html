@@ -1,1 +1,67 @@
-<p>notification-email works!</p>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Email thông báo</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item active">Danh sách</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <p-toolbar>
+                <div class="p-toolbar-group-right">
+                    <div class="p-d-flex">
+                        <span class="p-ml-auto">
+                            <input pInputText type="text" class="p-inputtext-sm" #search_input
+                                placeholder="Email" />
+                            <p-button icon="pi pi-search" styleClass="p-button-sm" (click)="search(search_input.value)">
+                            </p-button>
+                        </span>
+                    </div>
+                </div>
+            </p-toolbar>
+            <p-table [value]="datas" [lazy]="true" (onLazyLoad)="load($event)" [totalRecords]="totalResult"
+                [loading]="loading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
+                        </th>
+                        <th>#</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-data>
+                    <tr>
+                        <td>{{data.email}}</td>
+                        <td>{{data.created_at|date:'longDate'}}</td>
+                        <td>
+                            <button pButton icon="pi pi-trash"
+                                class="p-button-rounded p-button-sm p-button-warning mb-2"
+                                (click)="delete(data.id)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <div *ngIf="totalResult == total">
+                            Có tổng số {{totalResult}}
+                        </div>
+                        <div *ngIf="totalResult != total">
+                            Có {{totalResult}} trên tổng số {{total}}
+                        </div>
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+    </section>
+</div>
