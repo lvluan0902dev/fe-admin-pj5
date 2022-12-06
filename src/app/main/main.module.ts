@@ -53,6 +53,12 @@ import { DropdownModule } from 'primeng/dropdown';
 import { DialogModule } from 'primeng/dialog';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
+import { BlogCategoryListComponent } from './components/blog-category/blog-category-list/blog-category-list.component';
+import { BlogCategoryAddComponent } from './components/blog-category/blog-category-add/blog-category-add.component';
+import { BlogCategoryEditComponent } from './components/blog-category/blog-category-edit/blog-category-edit.component';
+import { BlogAddComponent } from './components/blog/blog-add/blog-add.component';
+import { BlogEditComponent } from './components/blog/blog-edit/blog-edit.component';
+import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +95,12 @@ import { HttpClientModule } from '@angular/common/http';
     ProductListComponent,
     ProductAddComponent,
     ProductEditComponent,
+    BlogCategoryListComponent,
+    BlogCategoryAddComponent,
+    BlogCategoryEditComponent,
+    BlogAddComponent,
+    BlogEditComponent,
+    BlogListComponent,
   ],
   imports: [
     CommonModule,
