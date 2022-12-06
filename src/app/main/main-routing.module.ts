@@ -3,6 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { BeautyImageAddComponent } from './components/beauty-image/beauty-image-add/beauty-image-add.component';
 import { BeautyImageEditComponent } from './components/beauty-image/beauty-image-edit/beauty-image-edit.component';
 import { BeautyImageListComponent } from './components/beauty-image/beauty-image-list/beauty-image-list.component';
+import { BlogCategoryAddComponent } from './components/blog-category/blog-category-add/blog-category-add.component';
+import { BlogCategoryEditComponent } from './components/blog-category/blog-category-edit/blog-category-edit.component';
+import { BlogCategoryListComponent } from './components/blog-category/blog-category-list/blog-category-list.component';
+import { BlogAddComponent } from './components/blog/blog-add/blog-add.component';
+import { BlogEditComponent } from './components/blog/blog-edit/blog-edit.component';
+import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
 import { MessageComponent } from './components/contact-manage/message/message.component';
 import { NotificationEmailComponent } from './components/contact-manage/notification-email/notification-email.component';
 import { AddressComponent } from './components/contact-setting/address/address.component';
@@ -245,6 +251,48 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: ProductEditComponent
+          }
+        ]
+      },
+      {
+        path: 'blog',
+        children: [
+          {
+            path: '',
+            component: BlogListComponent
+          },
+          {
+            path: 'list',
+            component: BlogListComponent
+          },
+          {
+            path: 'add',
+            component: BlogAddComponent
+          },
+          {
+            path: 'edit/:id',
+            component: BlogEditComponent
+          }
+        ]
+      },
+      {
+        path: 'blog-category',
+        children: [
+          {
+            path: '',
+            component: BlogCategoryListComponent
+          },
+          {
+            path: 'list',
+            component: BlogCategoryListComponent
+          },
+          {
+            path: 'add',
+            component: BlogCategoryAddComponent
+          },
+          {
+            path: 'edit/:id',
+            component: BlogCategoryEditComponent
           }
         ]
       },
