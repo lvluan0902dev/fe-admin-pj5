@@ -24,11 +24,20 @@ export class TokenService {
     const token = this.get();
     if (token) {
       const payload = this.payload(token);
+
+      // For local
       if (payload.iss === environment.apiUrl + '/login') {
         return true;
       } else {
         return false;
       }
+
+      // For live site
+      // if (payload.iss === 'http://apipj5.vuimungcamgiang.com/api' + '/login') {
+      //   return true;
+      // } else {
+      //   return false;
+      // }
     }
     return false;
   }
