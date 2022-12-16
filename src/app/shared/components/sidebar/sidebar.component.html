@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    <a routerLink="/dashboard" class="brand-link">
         <!-- <img src="../../../../assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8"> -->
         <span class="brand-text font-weight-light">VNBeauty</span>
@@ -15,7 +15,7 @@
                     alt="User Image">
             </div> -->
             <div class="info">
-                <a href="#" class="d-block">Admin</a>
+                <a class="d-block">Admin</a>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:;" class="nav-link">
+                    <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-store-alt"></i>
                         <p>
                             Cửa hàng
@@ -57,10 +57,45 @@
                                 <p>Thương hiệu sản phẩm</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Quản lý đơn hàng
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>ĐH chưa xử lý</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>ĐH đang vận chuyển</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>ĐH đã hoàn thành</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>ĐH đã huỷ</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:;" class="nav-link">
+                    <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-blog"></i>
                         <p>
                             Quản lý bài viết
@@ -123,7 +158,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:;" class="nav-link">
+                    <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-comments-dollar"></i>
                         <p>
                             Quản lý liên hệ
@@ -146,7 +181,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:;" class="nav-link">
+                    <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
                             Cài đặt liên hệ
@@ -181,7 +216,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:;" (click)="logout($event)" *ngIf="loggedIn" class="nav-link">
+                    <a href="javascript:void(0)" (click)="logout($event)" *ngIf="loggedIn" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Đăng xuất
