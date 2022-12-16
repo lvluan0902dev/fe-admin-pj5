@@ -1,0 +1,134 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Đơn hàng chưa xử lý</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item active">Danh sách</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <p-toolbar>
+                <div class="p-toolbar-group-left">
+                </div>
+
+                <div class="p-toolbar-group-right">
+                    <div class="p-d-flex">
+                        <span class="p-ml-auto">
+                            <input pInputText type="text" class="p-inputtext-sm" #search_input
+                                placeholder="Tên, Email, Số điện thoại" />
+                            <p-button icon="pi pi-search" styleClass="p-button-sm" (click)="search(search_input.value)">
+                            </p-button>
+                        </span>
+                    </div>
+                </div>
+            </p-toolbar>
+            <p-table [value]="datas" [lazy]="true" (onLazyLoad)="load($event)" [totalRecords]="totalResult"
+                [loading]="loading" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="10"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="full_name">Tên khách hàng <p-sortIcon field="full_name"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="phone_number">Số điện thoại <p-sortIcon field="phone_number"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
+                        </th>
+                        <th>#</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-data>
+                    <tr>
+                        <td>{{data.full_name}}</td>
+                        <td>{{data.email}}</td>
+                        <td>{{data.phone_number}}</td>
+                        <td>{{data.created_at|date:'longDate'}}</td>
+                        <td>
+                            <button title="Xem chi tiết" (click)="1" pButton icon="pi pi-eye"
+                                class="p-button-rounded p-button-sm p-button-info mr-2 mb-2"></button>
+                            <button title="Đang vận chuyển" (click)="changeOrderStatus(data.id, 1)" pButton
+                                icon="pi pi-bolt"
+                                class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
+                            <button title="Hoàn thành" (click)="changeOrderStatus(data.id, 2)" pButton
+                                icon="pi pi-check"
+                                class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>
+                            <button title="Huỷ đơn" (click)="changeOrderStatus(data.id, 3)" pButton icon="pi pi-ban"
+                                class="p-button-rounded p-button-sm p-button-warning mr-2 mb-2"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <div *ngIf="totalResult == total">
+                            Có tổng số {{totalResult}}
+                        </div>
+                        <div *ngIf="totalResult != total">
+                            Có {{totalResult}} trên tổng số {{total}}
+                        </div>
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+    </section>
+</div>
+
+<p-dialog header="Chi tiết đơn hàng" [(visible)]="orderDetailsDialog" [modal]="true"
+    [style]="{width: '75vw', height: '100vh'}" [draggable]="false" [resizable]="true" [maximizable]="true">
+    <ng-template pTemplate="content">
+        <p-table [value]="orderDetailsDatas" [lazy]="true" (onLazyLoad)="orderDetailsLoad($event)"
+            [totalRecords]="orderDetailsTotalResult" [loading]="orderDetailsLoading" dataKey="id"
+            responsiveLayout="scroll" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10,25,50]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Tên <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="price">Giá <p-sortIcon field="stock"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="stock">Số lượng <p-sortIcon field="stock"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
+                    </th>
+                    <th>#</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-orderDetailsData>
+                <tr>
+                    <td>
+                        {{orderDetailsData.name}}
+                    </td>
+                    <td>
+                        {{orderDetailsData.price | number}}
+                    </td>
+                    <td>
+                        {{orderDetailsData.stock | number}}
+                    </td>
+                    <td>{{orderDetailsData.created_at|date:'longDate'}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    <div *ngIf="orderDetailsTotalResult == orderDetailsTotal">
+                        Có tổng số {{orderDetailsTotalResult}}
+                    </div>
+                    <div *ngIf="orderDetailsTotalResult != orderDetailsTotal">
+                        Có {{orderDetailsTotalResult}} trên tổng số {{orderDetailsTotal}}
+                    </div>
+                </div>
+            </ng-template>
+        </p-table>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple type="button" label="Primary" class="p-button-outlined p-button-sm" icon="pi pi-check"
+            (click)="orderDetailsDialog=false" label="Đóng" styleClass="p-button-text"></button>
+    </ng-template>
+</p-dialog>

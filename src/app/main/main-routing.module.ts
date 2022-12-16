@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FaqAddComponent } from './components/faq/faq-add/faq-add.component';
 import { FaqEditComponent } from './components/faq/faq-edit/faq-edit.component';
 import { FaqListComponent } from './components/faq/faq-list/faq-list.component';
+import { OrderNewComponent } from './components/order/order-new/order-new.component';
 import { ProductBrandAddComponent } from './components/product-brand/product-brand-add/product-brand-add.component';
 import { ProductBrandEditComponent } from './components/product-brand/product-brand-edit/product-brand-edit.component';
 import { ProductBrandListComponent } from './components/product-brand/product-brand-list/product-brand-list.component';
@@ -294,6 +295,15 @@ const routes: Routes = [
             path: 'edit/:id',
             component: BlogCategoryEditComponent
           }
+        ]
+      },
+      {
+        path: 'order',
+        children: [
+          {
+            path: 'list-order-new',
+            component: OrderNewComponent
+          },
         ]
       },
     ]

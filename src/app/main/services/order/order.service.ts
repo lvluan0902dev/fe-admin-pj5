@@ -16,4 +16,28 @@ export class OrderService {
   constructor(
     private httpService: HttpService
   ) { }
+
+  public list(orderStatus: any, data: any) {
+    if (data.sortField == undefined || data.sortField == '') {
+      data.sortOrder = 0;
+    }
+
+    let payload = {
+      first_row: data.first,
+      per_page: data.rows == undefined ? 0 : data.rows,
+      sort_field: data.sortField == undefined ? '' : data.sortField,
+      sort_type: data.sortOrder == 1 ? 'ASC' : 'DESC',
+      search: data.searchInput
+    };
+    return this.httpService.post(this.url + 'list/' + orderStatus, payload, httpOptions);
+  }
+
+  /**
+   * 
+   * @param id - order id
+   * @param orderStatus - order status
+   */
+  public changeOrderStatus(id: any, orderStatus:any) {
+    return this.httpService.post(this.url + 'change-order-status/' + id + '/' + orderStatus, httpOptions);
+  }
 }

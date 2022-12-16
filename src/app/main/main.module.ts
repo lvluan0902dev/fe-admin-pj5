@@ -59,6 +59,10 @@ import { BlogCategoryEditComponent } from './components/blog-category/blog-categ
 import { BlogAddComponent } from './components/blog/blog-add/blog-add.component';
 import { BlogEditComponent } from './components/blog/blog-edit/blog-edit.component';
 import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
+import { OrderNewComponent } from './components/order/order-new/order-new.component';
+import { OrderTransportComponent } from './components/order/order-transport/order-transport.component';
+import { OrderDoneComponent } from './components/order/order-done/order-done.component';
+import { OrderCancelComponent } from './components/order/order-cancel/order-cancel.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +105,10 @@ import { BlogListComponent } from './components/blog/blog-list/blog-list.compone
     BlogAddComponent,
     BlogEditComponent,
     BlogListComponent,
+    OrderNewComponent,
+    OrderTransportComponent,
+    OrderDoneComponent,
+    OrderCancelComponent,
   ],
   imports: [
     CommonModule,
