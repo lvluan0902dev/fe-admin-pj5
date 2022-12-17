@@ -54,7 +54,7 @@
                     <tr>
                         <td>{{data.title}}</td>
                         <td [innerHTML]="data.content | safeHtml"></td>
-                        <td>{{data.created_at|date:'longDate'}}</td>
+                        <td>{{data.created_at|date:'dd/MM/yyyy hh:mm a'}}</td>
                         <td>{{data.status == 1 ? 'Bật' : 'Tắt'}}</td>
                         <td>
                             <a [routerLink]="['/faq/edit', data.id]">

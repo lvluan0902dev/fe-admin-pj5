@@ -52,9 +52,9 @@
                         <td>{{data.full_name}}</td>
                         <td>{{data.email}}</td>
                         <td>{{data.phone_number}}</td>
-                        <td>{{data.created_at|date:'longDate'}}</td>
+                        <td>{{data.created_at|date:'dd/MM/yyyy hh:mm a'}}</td>
                         <td>
-                            <button title="Xem chi tiết" (click)="1" pButton icon="pi pi-eye"
+                            <button title="Xem chi tiết" (click)="showOrderDetailsDialog(data.id)" pButton icon="pi pi-eye"
                                 class="p-button-rounded p-button-sm p-button-info mr-2 mb-2"></button>
                             <button title="Đang vận chuyển" (click)="changeOrderStatus(data.id, 1)" pButton
                                 icon="pi pi-bolt"
@@ -84,41 +84,77 @@
 
 <p-dialog header="Chi tiết đơn hàng" [(visible)]="orderDetailsDialog" [modal]="true"
     [style]="{width: '75vw', height: '100vh'}" [draggable]="false" [resizable]="true" [maximizable]="true">
+
+    <div *ngIf="order">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <span>Tên khách hàng: </span>
+                    <span style="font-weight: bold;">{{order.full_name}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <span>Địa chỉ: </span>
+                    <span style="font-weight: bold;">{{order.address}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <span>Email: </span>
+                    <span style="font-weight: bold;">{{order.email}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <span>Số điện thoại: </span>
+                    <span style="font-weight: bold;">{{order.phone_number}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <ng-template pTemplate="content">
         <p-table [value]="orderDetailsDatas" [lazy]="true" (onLazyLoad)="orderDetailsLoad($event)"
             [totalRecords]="orderDetailsTotalResult" [loading]="orderDetailsLoading" dataKey="id"
             responsiveLayout="scroll" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10,25,50]">
             <ng-template pTemplate="header">
                 <tr>
-                    <th pSortableColumn="name">Tên <p-sortIcon field="name"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="price">Giá <p-sortIcon field="stock"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="stock">Số lượng <p-sortIcon field="stock"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
-                    </th>
-                    <th>#</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá (đ)</th>
+                    <th>Số lượng</th>
+                    <th>Tổng (đ)</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-orderDetailsData>
                 <tr>
                     <td>
-                        {{orderDetailsData.name}}
+                        {{orderDetailsData.product_name}} ({{orderDetailsData.option_name}})
                     </td>
                     <td>
-                        {{orderDetailsData.price | number}}
+                        {{orderDetailsData.option_price | number}}
                     </td>
                     <td>
-                        {{orderDetailsData.stock | number}}
+                        {{orderDetailsData.quantity | number}}
                     </td>
-                    <td>{{orderDetailsData.created_at|date:'longDate'}}</td>
+                    <td>
+                        {{orderDetailsData.quantity * orderDetailsData.option_price | number}}
+                    </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">
                 <div class="p-d-flex p-ai-center p-jc-between">
+                    <div>
+                        Tổng tiền: {{totalPrice | number}}đ
+                    </div>
                     <div *ngIf="orderDetailsTotalResult == orderDetailsTotal">
-                        Có tổng số {{orderDetailsTotalResult}}
+                        Có tổng số {{orderDetailsTotalResult}} sản phẩm
                     </div>
                     <div *ngIf="orderDetailsTotalResult != orderDetailsTotal">
                         Có {{orderDetailsTotalResult}} trên tổng số {{orderDetailsTotal}}

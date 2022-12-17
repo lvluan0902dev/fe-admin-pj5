@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
+import { OrderItem } from 'src/app/main/models/order-item/order-item.model';
 import { Order } from 'src/app/main/models/order/order.model';
 import { OrderService } from 'src/app/main/services/order/order.service';
 import { environment } from 'src/environments/environment';
@@ -19,6 +20,17 @@ export class OrderNewComponent implements OnInit {
   public loading: boolean = true;
   public event: any;
   public search_input: string = '';
+
+  // Order details
+  private orderId: number = 0;
+  public orderDetailsDialog: boolean = false;
+  public orderDetailsEvent: any;
+  public orderDetailsLoading: boolean = false;
+  public orderDetailsDatas: OrderItem[] = [];
+  public orderDetailsTotalResult: number = 0;
+  public orderDetailsTotal: number = 0;
+  public totalPrice: number = 0;
+  public order!: Order;
 
   constructor(
     private orderService: OrderService,
@@ -97,5 +109,50 @@ export class OrderNewComponent implements OnInit {
 
   private setLoadingStatus(status: boolean) {
     this.loading = status;
+  }
+
+  // Order details
+  public showOrderDetailsDialog(orderId: number) {
+    this.orderId = orderId;
+    this.orderDetailsDialog = true;
+    this.getTotalPrice();
+    this.getOrderDetails();
+  }
+
+  public orderDetailsLoad(event: LazyLoadEvent) {
+    this.orderDetailsSetLoadingStatus(true);
+    this.orderDetailsEvent = event;
+    setTimeout(() => {
+      this.orderDetailsLoadData();
+    }, 1000);
+  }
+
+  private orderDetailsSetLoadingStatus(status: boolean) {
+    this.orderDetailsLoading = status;
+  }
+
+  private orderDetailsLoadData() {
+    this.orderService.orderDetailsList(this.orderDetailsEvent, this.orderId).subscribe((response) => {
+      this.orderDetailsDatas = response.data;
+      this.orderDetailsTotalResult = response.total_result;
+      this.orderDetailsTotal = response.total;
+      this.orderDetailsSetLoadingStatus(false);
+    });
+  }
+
+  private getTotalPrice() {
+    this.orderService.getOrderTotalPrice(this.orderId).subscribe((response) => {
+      if (response.success == 1) {
+        this.totalPrice = response.data;
+      }
+    })
+  }
+
+  private getOrderDetails() {
+    this.orderService.getOrderDetails(this.orderId).subscribe((response) => {
+      if (response.success == 1) {
+        this.order = response.data;
+      }
+    })
   }
 }

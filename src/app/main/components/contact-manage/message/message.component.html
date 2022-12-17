@@ -48,7 +48,7 @@
                         <td>{{data.name}}</td>
                         <td>{{data.email}}</td>
                         <td [innerHTML]="data.content | safeHtml"></td>
-                        <td>{{data.created_at|date:'longDate'}}</td>
+                        <td>{{data.created_at|date:'dd/MM/yyyy hh:mm a'}}</td>
                         <td>
                             <button pButton icon="pi pi-trash"
                                 class="p-button-rounded p-button-sm p-button-warning mb-2"

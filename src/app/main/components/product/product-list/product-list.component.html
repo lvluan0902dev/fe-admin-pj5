@@ -68,7 +68,7 @@
                                 {{data.product_brand.name}}
                             </span>
                         </td>
-                        <td>{{data.created_at|date:'longDate'}}</td>
+                        <td>{{data.created_at|date:'dd/MM/yyyy hh:mm a'}}</td>
                         <td>{{data.status == 1 ? 'Bật' : 'Tắt'}}</td>
                         <td>
                             <button (click)="showProductDetailsDialog(data.id)" pButton icon="pi pi-eye"
@@ -127,7 +127,7 @@
                         <p-image *ngIf="productImageData.image_path" [src]="url + productImageData.image_path"
                             [alt]="productImageData.image_name" [preview]="true" width="100"></p-image>
                     </td>
-                    <td>{{productImageData.created_at|date:'longDate'}}</td>
+                    <td>{{productImageData.created_at|date:'dd/MM/yyyy hh:mm a'}}</td>
                     <td>
                         <button pButton icon="pi pi-trash" class="p-button-rounded p-button-sm p-button-warning mb-2"
                             (click)="productImagedelete(productImageData.id)"></button>
@@ -237,7 +237,7 @@
                     <td>
                         {{productOptionData.stock | number}}
                     </td>
-                    <td>{{productOptionData.created_at|date:'longDate'}}</td>
+                    <td>{{productOptionData.created_at|date:'dd/MM/yyyy hh:mm a'}}</td>
                     <td>
                         <button (click)="productOptionEdit(productOptionData.id)" pButton icon="pi pi-pencil"
                             class="p-button-rounded p-button-sm p-button-success mr-2 mb-2"></button>

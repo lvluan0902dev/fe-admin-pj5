@@ -62,7 +62,7 @@
                             <p-image *ngIf="data.image_path" [src]="url + data.image_path" [alt]="data.image_name"
                                 [preview]="true" width="250"></p-image>
                         </td>
-                        <td>{{data.created_at|date:'longDate'}}</td>
+                        <td>{{data.created_at|date:'dd/MM/yyyy hh:mm a'}}</td>
                         <td>{{data.status == 1 ? 'Bật' : 'Tắt'}}</td>
                         <td>
                             <a [routerLink]="['/blog/edit', data.id]">
