@@ -38,7 +38,7 @@ export class OrderTransportComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private toastService: ToastService,
   ) {
-    this.title.setTitle('Danh sách Đơn hàng chưa xử lý');
+    this.title.setTitle('Danh sách Đơn hàng đang vận chuyển');
   }
 
   ngOnInit(): void {

@@ -19,6 +19,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FaqAddComponent } from './components/faq/faq-add/faq-add.component';
 import { FaqEditComponent } from './components/faq/faq-edit/faq-edit.component';
 import { FaqListComponent } from './components/faq/faq-list/faq-list.component';
+import { OrderCancelComponent } from './components/order/order-cancel/order-cancel.component';
+import { OrderDoneComponent } from './components/order/order-done/order-done.component';
 import { OrderNewComponent } from './components/order/order-new/order-new.component';
 import { OrderTransportComponent } from './components/order/order-transport/order-transport.component';
 import { ProductBrandAddComponent } from './components/product-brand/product-brand-add/product-brand-add.component';
@@ -308,6 +310,14 @@ const routes: Routes = [
           {
             path: 'list-order-transport',
             component: OrderTransportComponent
+          },
+          {
+            path: 'list-order-done',
+            component: OrderDoneComponent
+          },
+          {
+            path: 'list-order-cancel',
+            component: OrderCancelComponent
           },
         ]
       },
