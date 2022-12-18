@@ -41,4 +41,12 @@ export class DashboardService {
   public getOrderStatusCount(id: any) {
     return this.httpService.get(this.url + 'get-order-status-count/' + id, httpOptions);
   }
+
+  public getOrdersLatest() {
+    return this.httpService.get(this.url + 'get-orders-latest', httpOptions);
+  }
+
+  public getProductsLatest() {
+    return this.httpService.get(this.url + 'get-products-latest', httpOptions);
+  }
 }

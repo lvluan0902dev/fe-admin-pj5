@@ -90,75 +90,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                        <tr *ngFor="let order of ordersLatest">
+                                            <td>{{order.full_name}}</td>
                                             <td>Call of Duty IV</td>
-                                            <td><span class="badge badge-success">Shipped</span></td>
                                             <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                    90,80,90,-70,61,-83,63</div>
+                                                <span *ngIf="order.status == 0" class="badge badge-warning">Chưa xử lý</span>
+                                                <span *ngIf="order.status == 1" class="badge badge-info">Đang vận chuyển</span>
+                                                <span *ngIf="order.status == 2" class="badge badge-success">Đã hoàn thành</span>
+                                                <span *ngIf="order.status == 3" class="badge badge-danger">Đã huỷ</span>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                            <td>Samsung Smart TV</td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
                                             <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                    90,80,-90,70,61,-83,68</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                            <td>iPhone 6 Plus</td>
-                                            <td><span class="badge badge-danger">Delivered</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                    90,-80,90,70,-61,83,63</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                            <td>Samsung Smart TV</td>
-                                            <td><span class="badge badge-info">Processing</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00c0ef" data-height="20">
-                                                    90,80,-90,70,-61,83,63</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                            <td>Samsung Smart TV</td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                    90,80,-90,70,61,-83,68</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                            <td>iPhone 6 Plus</td>
-                                            <td><span class="badge badge-danger">Delivered</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                    90,-80,90,70,-61,83,63</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                            <td>Call of Duty IV</td>
-                                            <td><span class="badge badge-success">Shipped</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                    90,80,90,-70,61,-83,63</div>
+                                                {{order.created_at|date:'dd/MM/yyyy hh:mm a'}}
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="card-footer clearfix">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">Xem tất cả</a>
                         </div>
                     </div>
                 </div>
@@ -223,22 +170,22 @@
                         </div>
                         <div class="card-body p-0">
                             <ul class="products-list product-list-in-card pl-2 pr-2">
-                                <li class="item">
+                                <li class="item" *ngFor="let product of productsLatest">
                                     <div class="product-img">
-                                        <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                        <img [src]="url + product.image_path" [alt]="product.image_name" class="img-size-50">
                                     </div>
                                     <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">Samsung TV
-                                            <span class="badge badge-warning float-right">$1800</span></a>
-                                        <span class="product-description">
-                                            Samsung 32" 1080p 60Hz LED Smart HDTV.
-                                        </span>
+                                        <div>{{product.product_category.name}}
+                                            <span class="badge badge-info float-right">{{product.created_at|date:'dd/MM/yyyy hh:mm a'}}</span></div>
+                                        <a [routerLink]="['/product/edit', product.id]" class="product-title">
+                                            {{product.name}}
+                                        </a>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="javascript:void(0)" class="uppercase">Xem tất cả</a>
+                            <a routerLink="/product/list" class="uppercase">Xem tất cả</a>
                         </div>
                     </div>
                 </div>

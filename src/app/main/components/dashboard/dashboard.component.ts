@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { environment } from 'src/environments/environment';
+import { Order } from '../../models/order/order.model';
+import { Product } from '../../models/product/product.model';
 import { DashboardService } from '../../services/dashboard/dashboard.service';
 
 @Component({
@@ -9,6 +12,7 @@ import { DashboardService } from '../../services/dashboard/dashboard.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  public url = environment.url + '/';
   public totalProduct: number = 0;
   public totalBlog: number = 0;
   public totalOrder: number = 0;
@@ -17,6 +21,8 @@ export class DashboardComponent implements OnInit {
   public totalOrderTransport: number = 0;
   public totalOrderDone: number = 0;
   public totalOrderCancel: number = 0;
+  public ordersLatest: Order[] = [];
+  public productsLatest: Product[] = [];
 
   constructor(
     private authService: AuthService,
@@ -33,9 +39,11 @@ export class DashboardComponent implements OnInit {
     this.getOrderCount();
     this.getMessageCount();
     this.getOrderStatusCount();
+    this.getOrdersLatest();
+    this.getProductsLatest();
   }
 
-  public me() {
+  private me() {
     this.authService.me().subscribe((data) => {
       console.log(data);
     })
@@ -95,6 +103,22 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getOrderStatusCount(3).subscribe((response) => {
       if (response.success == 1) {
         this.totalOrderCancel = response.data;
+      }
+    });
+  }
+
+  private getOrdersLatest() {
+    this.dashboardService.getOrdersLatest().subscribe((response) => {
+      if (response.success == 1) {
+        this.ordersLatest = response.data;
+      }
+    });
+  }
+
+  private getProductsLatest() {
+    this.dashboardService.getProductsLatest().subscribe((response) => {
+      if (response.success == 1) {
+        this.productsLatest = response.data;
       }
     });
   }
