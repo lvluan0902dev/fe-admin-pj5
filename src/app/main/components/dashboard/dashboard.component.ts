@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
   public totalOrderCancel: number = 0;
   public ordersLatest: Order[] = [];
   public productsLatest: Product[] = [];
+  public productsMostViewed: Product[] = [];
 
   constructor(
     private authService: AuthService,
@@ -41,6 +42,7 @@ export class DashboardComponent implements OnInit {
     this.getOrderStatusCount();
     this.getOrdersLatest();
     this.getProductsLatest();
+    this.getProductsMostViewed();
   }
 
   private me() {
@@ -119,6 +121,14 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getProductsLatest().subscribe((response) => {
       if (response.success == 1) {
         this.productsLatest = response.data;
+      }
+    });
+  }
+
+  private getProductsMostViewed() {
+    this.dashboardService.getProductsMostViewed().subscribe((response) => {
+      if (response.success == 1) {
+        this.productsMostViewed = response.data;
       }
     });
   }

@@ -44,6 +44,8 @@
                         <th>Hình ảnh</th>
                         <th>Danh mục</th>
                         <th>Thương hiệu</th>
+                        <th pSortableColumn="view_count">Lượt xem <p-sortIcon field="view_count"></p-sortIcon>
+                        </th>
                         <th pSortableColumn="created_at">Ngày thêm <p-sortIcon field="created_at"></p-sortIcon>
                         </th>
                         <th pSortableColumn="status">Trạng thái <p-sortIcon field="status"></p-sortIcon>
@@ -68,6 +70,7 @@
                                 {{data.product_brand.name}}
                             </span>
                         </td>
+                        <td>{{data.view_count | number}}</td>
                         <td>{{data.created_at|date:'dd/MM/yyyy hh:mm a'}}</td>
                         <td>{{data.status == 1 ? 'Bật' : 'Tắt'}}</td>
                         <td>

@@ -66,45 +66,131 @@
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <!-- Order latest -->
-                    <div class="card">
-                        <div class="card-header border-transparent">
-                            <h3 class="card-title">Đơn hàng mới nhất</h3>
+                    <div class="col-12">
+                        <!-- Order latest -->
+                        <div class="card">
+                            <div class="card-header border-transparent">
+                                <h3 class="card-title">Đơn hàng mới nhất</h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table m-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Tên khách hàng</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Trạng thái</th>
+                                                <th>Thời gian</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let order of ordersLatest">
+                                                <td>{{order.full_name}}</td>
+                                                <td>{{order.phone_number}}</td>
+                                                <td>
+                                                    <span *ngIf="order.status == 0" class="badge badge-warning">Chưa xử
+                                                        lý</span>
+                                                    <span *ngIf="order.status == 1" class="badge badge-info">Đang vận
+                                                        chuyển</span>
+                                                    <span *ngIf="order.status == 2" class="badge badge-success">Đã hoàn
+                                                        thành</span>
+                                                    <span *ngIf="order.status == 3" class="badge badge-danger">Đã
+                                                        huỷ</span>
+                                                </td>
+                                                <td>
+                                                    {{order.created_at|date:'dd/MM/yyyy hh:mm a'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table m-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Tên khách hàng</th>
-                                            <th>Số điện thoại</th>
-                                            <th>Trạng thái</th>
-                                            <th>Thời gian</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let order of ordersLatest">
-                                            <td>{{order.full_name}}</td>
-                                            <td>{{order.phone_number}}</td>
-                                            <td>
-                                                <span *ngIf="order.status == 0" class="badge badge-warning">Chưa xử lý</span>
-                                                <span *ngIf="order.status == 1" class="badge badge-info">Đang vận chuyển</span>
-                                                <span *ngIf="order.status == 2" class="badge badge-success">Đã hoàn thành</span>
-                                                <span *ngIf="order.status == 3" class="badge badge-danger">Đã huỷ</span>
-                                            </td>
-                                            <td>
-                                                {{order.created_at|date:'dd/MM/yyyy hh:mm a'}}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Product most viewed -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Sản phẩm được xem nhiều nhất</h3>
+
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <ul class="products-list product-list-in-card pl-2 pr-2">
+                                            <li class="item" *ngFor="let product of productsMostViewed">
+                                                <div class="product-img">
+                                                    <img [src]="url + product.image_path" [alt]="product.image_name"
+                                                        class="img-size-50">
+                                                </div>
+                                                <div class="product-info">
+                                                    <div>{{product.product_category.name}}
+                                                        <span
+                                                            class="badge badge-success float-right">{{product.view_count}}</span>
+                                                    </div>
+                                                    <a [routerLink]="['/product/edit', product.id]"
+                                                        class="product-title">
+                                                        {{product.name}}
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <a routerLink="/product/list" class="uppercase">Xem tất cả</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <!-- Product latest -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Sản phẩm thêm gần đây</h3>
+
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <ul class="products-list product-list-in-card pl-2 pr-2">
+                                            <li class="item" *ngFor="let product of productsLatest">
+                                                <div class="product-img">
+                                                    <img [src]="url + product.image_path" [alt]="product.image_name"
+                                                        class="img-size-50">
+                                                </div>
+                                                <div class="product-info">
+                                                    <div>{{product.product_category.name}}
+                                                        <span
+                                                            class="badge badge-info float-right">{{product.created_at|date:'dd/MM/yyyy hh:mm a'}}</span>
+                                                    </div>
+                                                    <a [routerLink]="['/product/edit', product.id]"
+                                                        class="product-title">
+                                                        {{product.name}}
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <a routerLink="/product/list" class="uppercase">Xem tất cả</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -154,38 +240,6 @@
                                     <span class="info-box-number">{{totalOrderCancel | number}}</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Product latest -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Sản phẩm thêm gần đây</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body p-0">
-                            <ul class="products-list product-list-in-card pl-2 pr-2">
-                                <li class="item" *ngFor="let product of productsLatest">
-                                    <div class="product-img">
-                                        <img [src]="url + product.image_path" [alt]="product.image_name" class="img-size-50">
-                                    </div>
-                                    <div class="product-info">
-                                        <div>{{product.product_category.name}}
-                                            <span class="badge badge-info float-right">{{product.created_at|date:'dd/MM/yyyy hh:mm a'}}</span></div>
-                                        <a [routerLink]="['/product/edit', product.id]" class="product-title">
-                                            {{product.name}}
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a routerLink="/product/list" class="uppercase">Xem tất cả</a>
                         </div>
                     </div>
                 </div>

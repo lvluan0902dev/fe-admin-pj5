@@ -49,4 +49,8 @@ export class DashboardService {
   public getProductsLatest() {
     return this.httpService.get(this.url + 'get-products-latest', httpOptions);
   }
+
+  public getProductsMostViewed() {
+    return this.httpService.get(this.url + 'get-products-most-viewed', httpOptions);
+  }
 }
