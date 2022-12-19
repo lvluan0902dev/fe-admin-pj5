@@ -15,8 +15,8 @@ import { UserService } from 'src/app/main/services/user/user.service';
 export class ChangeInformationComponent implements OnInit {
   public form = this.fb.group({
     name: ['', [Validators.required]],
-    current_password: ['', [Validators.required]],
-    new_password: ['', [Validators.required]],
+    current_password: ['', []],
+    new_password: ['', [Validators.minLength(6)]],
   });
 
   public user!: User;
@@ -48,8 +48,8 @@ export class ChangeInformationComponent implements OnInit {
   private setForm() {
     this.form = this.fb.group({
       name: [this.user.name, [Validators.required]],
-      current_password: ['', [Validators.required]],
-      new_password: ['', [Validators.required]],
+      current_password: ['', []],
+      new_password: ['', [Validators.minLength(6)]],
     });
   }
 

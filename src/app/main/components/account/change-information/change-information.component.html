@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Mật khẩu hiện tại <span class="required-color">*</span></label>
+                        <label>Mật khẩu hiện tại</label>
                         <div>
                             <input type="password" class="p-inputtext-sm with-100percent" pInputText
                                 formControlName="current_password" />
@@ -51,14 +51,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Mật khẩu mới <span class="required-color">*</span></label>
+                        <label>Mật khẩu mới</label>
                         <div>
                             <input type="password" class="p-inputtext-sm with-100percent" pInputText
                                 formControlName="new_password" />
                         </div>
                         <div *ngIf="form.controls.new_password.invalid && submitted">
-                            <div *ngIf="form.controls.new_password.errors?.['required']">
-                                <small class="p-error">Mật khẩu mới là bắt buộc</small>
+                            <div *ngIf="form.controls.new_password.errors?.['minlength']">
+                                <small class="p-error">Mật khẩu mới phải có độ dài tối thiểu là 6 ký tự</small>
                             </div>
                         </div>
                     </div>
