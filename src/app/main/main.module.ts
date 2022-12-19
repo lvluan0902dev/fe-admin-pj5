@@ -63,6 +63,7 @@ import { OrderNewComponent } from './components/order/order-new/order-new.compon
 import { OrderTransportComponent } from './components/order/order-transport/order-transport.component';
 import { OrderDoneComponent } from './components/order/order-done/order-done.component';
 import { OrderCancelComponent } from './components/order/order-cancel/order-cancel.component';
+import { ChangeInformationComponent } from './components/account/change-information/change-information.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { OrderCancelComponent } from './components/order/order-cancel/order-canc
     OrderTransportComponent,
     OrderDoneComponent,
     OrderCancelComponent,
+    ChangeInformationComponent,
   ],
   imports: [
     CommonModule,

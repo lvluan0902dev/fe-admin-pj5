@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChangeInformationComponent } from './components/account/change-information/change-information.component';
 import { BeautyImageAddComponent } from './components/beauty-image/beauty-image-add/beauty-image-add.component';
 import { BeautyImageEditComponent } from './components/beauty-image/beauty-image-edit/beauty-image-edit.component';
 import { BeautyImageListComponent } from './components/beauty-image/beauty-image-list/beauty-image-list.component';
@@ -321,6 +322,10 @@ const routes: Routes = [
           },
         ]
       },
+      {
+        path: 'account/change-information',
+        component: ChangeInformationComponent
+      }
     ]
   }
 ];
