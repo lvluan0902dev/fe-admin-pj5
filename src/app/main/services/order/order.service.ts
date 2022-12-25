@@ -73,4 +73,8 @@ export class OrderService {
     return this.httpService.get(this.url + 'get-order-details/' + id, httpOptions);
   }
 
+
+  public getDataForExportExcel(orderStatus: any) {
+    return this.httpService.get(this.url + 'get-data-for-export-excel/' + orderStatus, httpOptions);
+  }
 }

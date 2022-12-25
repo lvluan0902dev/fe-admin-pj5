@@ -6,6 +6,7 @@ import { OrderItem } from 'src/app/main/models/order-item/order-item.model';
 import { Order } from 'src/app/main/models/order/order.model';
 import { OrderService } from 'src/app/main/services/order/order.service';
 import { environment } from 'src/environments/environment';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-order-transport',
@@ -20,6 +21,7 @@ export class OrderTransportComponent implements OnInit {
   public loading: boolean = true;
   public event: any;
   public search_input: string = '';
+  private dataExportExcel: any[] = [];
 
   // Order details
   private orderId: number = 0;
@@ -67,6 +69,7 @@ export class OrderTransportComponent implements OnInit {
       this.totalResult = response.total_result;
       this.total = response.total;
       this.setLoadingStatus(false);
+      this.getDataForExportExcel();
     });
   }
 
@@ -152,6 +155,32 @@ export class OrderTransportComponent implements OnInit {
     this.orderService.getOrderDetails(this.orderId).subscribe((response) => {
       if (response.success == 1) {
         this.order = response.data;
+      }
+    })
+  }
+
+  public exportExcel() {
+    import("xlsx").then(xlsx => {
+      const worksheet = xlsx.utils.json_to_sheet(this.dataExportExcel);
+      const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+      this.saveAsExcelFile(excelBuffer, "don_hang");
+    });
+  }
+
+  private saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE
+    });
+    FileSaver.saveAs(data, fileName + '_dang_van_chuyen_' + new Date().getTime() + EXCEL_EXTENSION);
+  }
+
+  private getDataForExportExcel() {
+    this.orderService.getDataForExportExcel(1).subscribe((response) => {
+      if (response.success == 1) {
+        this.dataExportExcel = response.data;
       }
     })
   }
