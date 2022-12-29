@@ -128,7 +128,7 @@
             responsiveLayout="scroll" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10,25,50]">
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Tên sản phẩm</th>
+                    <th>Tên mỹ phẩm</th>
                     <th>Giá (đ)</th>
                     <th>Số lượng</th>
                     <th>Tổng (đ)</th>
@@ -156,7 +156,7 @@
                         Tổng tiền: {{totalPrice | number}}đ
                     </div>
                     <div *ngIf="orderDetailsTotalResult == orderDetailsTotal">
-                        Có tổng số {{orderDetailsTotalResult}} sản phẩm
+                        Có tổng số {{orderDetailsTotalResult}} mỹ phẩm
                     </div>
                     <div *ngIf="orderDetailsTotalResult != orderDetailsTotal">
                         Có {{orderDetailsTotalResult}} trên tổng số {{orderDetailsTotal}}

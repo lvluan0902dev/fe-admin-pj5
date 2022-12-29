@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Sản phẩm</h1>
+                    <h1>Mỹ phẩm</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -27,7 +27,7 @@
                     <div class="p-d-flex">
                         <span class="p-ml-auto">
                             <input pInputText type="text" class="p-inputtext-sm" #search_input
-                                placeholder="Sản phẩm, DMục, THiệu" />
+                                placeholder="Tên, DMục, THiệu" />
                             <p-button icon="pi pi-search" styleClass="p-button-sm" (click)="search(search_input.value)">
                             </p-button>
                         </span>
@@ -107,7 +107,7 @@
 
 
 <!-- Product Image Diaglog -->
-<p-dialog header="Hình ảnh sản phẩm" [(visible)]="productImageDialog" [modal]="true"
+<p-dialog header="Hình ảnh mỹ phẩm" [(visible)]="productImageDialog" [modal]="true"
     [style]="{width: '75vw', height: '100vh'}" [draggable]="false" [resizable]="true" [maximizable]="true">
     <p-fileUpload accept="image/*" name="image" [url]="apiUrl + 'admin/product/upload-product-image/' + productId"
         (onUpload)="productImageOnUpload($event)">
@@ -268,7 +268,7 @@
 </p-dialog>
 
 <!-- Product Details -->
-<p-dialog header="Chi tiết sản phẩm" [(visible)]="productDetailsDialog" [modal]="true"
+<p-dialog header="Chi tiết mỹ phẩm" [(visible)]="productDetailsDialog" [modal]="true"
     [style]="{width: '85vw', height: '100vh'}" [draggable]="false" [resizable]="true" [maximizable]="true">
     <ng-template pTemplate="content">
         <section class="content">

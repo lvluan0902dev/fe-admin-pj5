@@ -53,7 +53,7 @@ export class ProductEditComponent implements OnInit {
     private toastService: ToastService,
     private router: Router
   ) {
-    this.title.setTitle('Sửa Sản phẩm');
+    this.title.setTitle('Sửa Mỹ phẩm');
   }
 
   ngOnInit(): void {

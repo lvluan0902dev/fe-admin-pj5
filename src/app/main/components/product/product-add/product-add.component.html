@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Sản phẩm</h1>
+                    <h1>Mỹ phẩm</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -19,26 +19,26 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Danh mục sản phẩm <span class="required-color">*</span></label>
+                        <label>Danh mục mỹ phẩm <span class="required-color">*</span></label>
                         <div>
-                            <p-dropdown class="p-inputtext-sm" [options]="productCategories" placeholder="Chọn Danh mục sản phẩm" optionLabel="name" [showClear]="true" [style]="{'width':'100%'}" formControlName="product_category"></p-dropdown>
+                            <p-dropdown class="p-inputtext-sm" [options]="productCategories" placeholder="Chọn Danh mục mỹ phẩm" optionLabel="name" [showClear]="true" [style]="{'width':'100%'}" formControlName="product_category"></p-dropdown>
                         </div>
                         <div *ngIf="form.controls.product_category.invalid && submitted">
                             <div *ngIf="form.controls.product_category.errors?.['required']">
-                                <small class="p-error">Danh mục sản phẩm là bắt buộc</small>
+                                <small class="p-error">Danh mục mỹ phẩm là bắt buộc</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Thương hiệu sản phẩm <span class="required-color">*</span></label>
+                        <label>Thương hiệu mỹ phẩm <span class="required-color">*</span></label>
                         <div>
-                            <p-dropdown class="p-inputtext-sm" [options]="productBrands" placeholder="Chọn Thương hiệu sản phẩm" optionLabel="name" [showClear]="true" [style]="{'width':'100%'}" formControlName="product_brand"></p-dropdown>
+                            <p-dropdown class="p-inputtext-sm" [options]="productBrands" placeholder="Chọn Thương hiệu mỹ phẩm" optionLabel="name" [showClear]="true" [style]="{'width':'100%'}" formControlName="product_brand"></p-dropdown>
                         </div>
                         <div *ngIf="form.controls.product_brand.invalid && submitted">
                             <div *ngIf="form.controls.product_brand.errors?.['required']">
-                                <small class="p-error">Thương hiệu sản phẩm là bắt buộc</small>
+                                <small class="p-error">Thương hiệu mỹ phẩm là bắt buộc</small>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Chi tiết sản phẩm</label>
+                        <label>Chi tiết mỹ phẩm</label>
                         <editor apiKey="8j7su2hn4okmz32icrx43famupx36ujqadijpi0zzemwh2i5" id="product_detail" formControlName="product_detail"
                             [init]="{
                                 base_url: '/tinymce',

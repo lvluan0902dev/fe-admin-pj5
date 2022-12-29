@@ -26,7 +26,7 @@ export class ProductCategoryListComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private toastService: ToastService,
   ) {
-    this.title.setTitle('Danh sách Danh mục sản phẩm');
+    this.title.setTitle('Danh sách Danh mục mỹ phẩm');
   }
 
   ngOnInit(): void {

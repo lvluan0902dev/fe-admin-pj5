@@ -26,7 +26,7 @@ export class ProductBrandListComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private toastService: ToastService,
   ) {
-    this.title.setTitle('Danh sách Thương hiệu sản phẩm');
+    this.title.setTitle('Danh sách Thương hiệu mỹ phẩm');
   }
 
   ngOnInit(): void {

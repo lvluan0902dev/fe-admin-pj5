@@ -33,7 +33,7 @@ export class ProductCategoryEditComponent implements OnInit {
     private router: Router,
     private productCategoryService: ProductCategoryService,
   ) {
-    this.title.setTitle('Sửa Danh mục sản phẩm');
+    this.title.setTitle('Sửa Danh mục mỹ phẩm');
   }
 
   ngOnInit(): void {

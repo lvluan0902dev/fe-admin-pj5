@@ -33,7 +33,7 @@ export class ProductBrandEditComponent implements OnInit {
     private router: Router,
     private productBrandService: ProductBrandService,
   ) {
-    this.title.setTitle('Sửa Thương hiệu sản phẩm');
+    this.title.setTitle('Sửa Thương hiệu mỹ phẩm');
   }
 
   ngOnInit(): void {

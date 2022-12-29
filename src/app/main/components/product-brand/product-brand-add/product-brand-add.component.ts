@@ -25,7 +25,7 @@ export class ProductBrandAddComponent implements OnInit {
     private toastService: ToastService,
     private router: Router
   ) {
-    this.title.setTitle('Thêm Thương hiệu sản phẩm');
+    this.title.setTitle('Thêm Thương hiệu mỹ phẩm');
   }
 
   ngOnInit(): void {
