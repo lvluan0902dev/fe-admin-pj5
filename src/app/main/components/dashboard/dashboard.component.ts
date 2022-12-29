@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     private title: Title,
     private dashboardService: DashboardService
   ) {
-    this.title.setTitle('Bảng điều khiển');
+    this.title.setTitle('Trang tổng quan');
   }
 
   ngOnInit(): void {
