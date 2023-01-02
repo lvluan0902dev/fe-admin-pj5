@@ -92,6 +92,7 @@ export class OrderNewComponent implements OnInit {
       header: 'Đổi trạng thái',
       icon: 'pi pi-info-circle',
       accept: () => {
+        this.setLoadingStatus(true);
         this.orderService.changeOrderStatus(id, orderStatus).subscribe((response) => {
           if (response.success == 1) {
             this.toastService.success('Thành công', response.message);
